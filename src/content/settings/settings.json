@@ -1,0 +1,22 @@
+{
+	"settings": {
+		"brandInitials": "jp",
+		"siteName": "julia.pilch.physio",
+		"title": "Physiotherapist",
+		"tagline": "Physiotherapy grounded in movement, function, and an individual approach.",
+		"nav": [
+			{ "label": "About me", "href": "/about" },
+			{ "label": "Areas of practice", "href": "/expertise" },
+			{ "label": "Certificates", "href": "/certificates" },
+			{ "label": "References", "href": "/references" },
+			{ "label": "Contact", "href": "#contact" }
+		],
+		"contactCta": { "label": "Contact", "href": "#contact" },
+		"email": "julia.pilch.physio@gmail.com",
+		"instagramHandle": "@julia.pilch.physio",
+		"instagramUrl": "https://instagram.com/julia.pilch.physio",
+		"location": "Trondheim, Norway",
+		"credentialLine": "EU-authorised · HPR [number]",
+		"copyrightName": "Julia Pilch"
+	}
+}

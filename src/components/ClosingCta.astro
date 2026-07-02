@@ -1,0 +1,123 @@
+---
+interface Props {
+	heading: string;
+	ctaLabel: string;
+	ctaHref: string;
+	variant?: 'accentDeep' | 'beige' | 'plain';
+}
+
+const { heading, ctaLabel, ctaHref, variant = 'plain' } = Astro.props;
+---
+
+<section class:list={['jp-closing', `jp-closing--${variant}`]}>
+	<div class="jp-closing-inner">
+		<h2>{heading}</h2>
+		<div class="jp-closing-cta-row">
+			<a href={ctaHref} class="jp-closing-cta">
+				{ctaLabel} <span class="jp-arrow">→</span>
+			</a>
+		</div>
+	</div>
+</section>
+
+<style>
+	.jp-closing {
+		text-align: center;
+	}
+
+	.jp-closing--accentDeep {
+		background: var(--accent-deep);
+		color: #fff;
+	}
+
+	.jp-closing--beige {
+		background: var(--beige);
+		border-top: 1px solid var(--border);
+		border-bottom: 1px solid var(--border);
+	}
+
+	.jp-closing-inner {
+		max-width: 1180px;
+		margin: 0 auto;
+		padding: clamp(44px, 6vw, 76px) 20px;
+	}
+
+	.jp-closing--beige .jp-closing-inner {
+		padding: clamp(48px, 7vw, 84px) 20px;
+	}
+
+	h2 {
+		font-family: var(--heading-font);
+		font-weight: 400;
+		font-size: clamp(28px, 4.6vw, 42px);
+		line-height: 1.12;
+		letter-spacing: -0.01em;
+		margin: 0 auto;
+		max-width: 18em;
+	}
+
+	.jp-closing--beige h2 {
+		font-size: clamp(28px, 4.4vw, 42px);
+		line-height: 1.1;
+		margin: 0 auto 24px;
+	}
+
+	.jp-closing--accentDeep h2 {
+		margin: 0 auto 26px;
+	}
+
+	.jp-closing-cta-row {
+		display: flex;
+		justify-content: center;
+	}
+
+	.jp-closing--plain .jp-closing-cta-row {
+		margin: 28px 0 0;
+	}
+
+	.jp-closing-cta {
+		display: inline-flex;
+		align-items: center;
+		gap: 9px;
+		text-decoration: none;
+		font-weight: 600;
+		font-size: 16px;
+		padding: 14px 28px;
+		border-radius: 99px;
+		transition:
+			transform 0.15s,
+			background 0.15s;
+	}
+
+	.jp-closing--accentDeep .jp-closing-cta {
+		color: var(--accent-deep);
+		background: #fff;
+		box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18);
+	}
+
+	.jp-closing--accentDeep .jp-closing-cta:hover {
+		background: #f2ede4;
+		transform: translateY(-1px);
+	}
+
+	.jp-closing--beige .jp-closing-cta,
+	.jp-closing--plain .jp-closing-cta {
+		color: #fff;
+		background: var(--accent);
+		box-shadow: 0 6px 18px rgba(58, 125, 118, 0.22);
+	}
+
+	.jp-closing--beige .jp-closing-cta:hover,
+	.jp-closing--plain .jp-closing-cta:hover {
+		background: var(--accent-deep);
+		transform: translateY(-1px);
+	}
+
+	.jp-closing--beige .jp-closing-cta {
+		padding: 14px 30px;
+	}
+
+	.jp-arrow {
+		font-size: 18px;
+	}
+</style>

@@ -1,0 +1,63 @@
+---
+interface Props {
+	aspectRatio?: string;
+	label: string;
+	radius?: string;
+	stripe?: number;
+	dark?: boolean;
+}
+
+const { aspectRatio = '1/1', label, radius = '18px', stripe = 10, dark = false } = Astro.props;
+---
+
+<div
+	class:list={['jp-placeholder', dark && 'jp-placeholder--dark']}
+	style={{ aspectRatio, borderRadius: radius, '--jp-stripe': `${stripe}px`, '--jp-stripe-end': `${stripe + 1}px` }}
+>
+	<span>{label}</span>
+</div>
+
+<style>
+	.jp-placeholder {
+		position: relative;
+		overflow: hidden;
+		background: #e8e0d4;
+		background-image: repeating-linear-gradient(
+			135deg,
+			transparent,
+			transparent var(--jp-stripe),
+			rgba(58, 125, 118, 0.06) var(--jp-stripe),
+			rgba(58, 125, 118, 0.06) var(--jp-stripe-end)
+		);
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		border: 1px solid var(--border);
+	}
+
+	.jp-placeholder span {
+		font-family: ui-monospace, monospace;
+		font-size: 11.5px;
+		letter-spacing: 0.1em;
+		text-transform: uppercase;
+		color: #9a917f;
+		text-align: center;
+		padding: 0 12px;
+	}
+
+	.jp-placeholder--dark {
+		background: #2a5a55;
+		background-image: repeating-linear-gradient(
+			135deg,
+			transparent,
+			transparent var(--jp-stripe),
+			rgba(255, 255, 255, 0.05) var(--jp-stripe),
+			rgba(255, 255, 255, 0.05) var(--jp-stripe-end)
+		);
+		border-color: rgba(255, 255, 255, 0.16);
+	}
+
+	.jp-placeholder--dark span {
+		color: #9fc6bf;
+	}
+</style>

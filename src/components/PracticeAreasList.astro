@@ -1,0 +1,118 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import CoverImage from './CoverImage.astro';
+
+interface Props {
+	items: CollectionEntry<'expertise'>[];
+}
+
+const { items } = Astro.props;
+const sorted = [...items].sort((a, b) => a.data.order - b.data.order);
+---
+
+<section class="jp-areas">
+	<div class="jp-areas-list">
+		{
+			sorted.map((item) => (
+				<article class:list={['jp-area-row', item.data.special && 'jp-area-row--special']}>
+					<div class="jp-area-img">
+						<CoverImage
+							src={item.data.image}
+							alt={item.data.imageAlt}
+							ratio="4 / 3"
+							position={item.data.imagePosition ?? '50% 50%'}
+							radius="18px"
+						/>
+					</div>
+					<div class="jp-area-text">
+						<p class="jp-area-num">{String(item.data.order).padStart(2, '0')}</p>
+						<h2>{item.data.title}</h2>
+						<p class="jp-area-desc">{item.data.longDescription ?? item.data.description}</p>
+						{item.data.bridge && <p class="jp-area-bridge">{item.data.bridge}</p>}
+					</div>
+				</article>
+			))
+		}
+	</div>
+</section>
+
+<style>
+	.jp-areas {
+		max-width: 1180px;
+		margin: 0 auto;
+		padding: clamp(20px, 3vw, 32px) 20px clamp(40px, 6vw, 72px);
+	}
+
+	.jp-areas-list {
+		display: flex;
+		flex-direction: column;
+		gap: clamp(40px, 6vw, 80px);
+	}
+
+	.jp-area-row {
+		display: grid;
+		grid-template-columns: 0.85fr 1.15fr;
+		gap: clamp(24px, 4vw, 56px);
+		align-items: center;
+	}
+
+	.jp-area-img {
+		grid-column: 1;
+	}
+
+	.jp-area-text {
+		grid-column: 2;
+	}
+
+	.jp-area-row--special .jp-area-text {
+		background: #eef4f2;
+		border: 1px solid #cfe2dd;
+		border-radius: 18px;
+		padding: clamp(20px, 3vw, 32px);
+	}
+
+	.jp-area-num {
+		font-family: ui-monospace, monospace;
+		font-size: 12px;
+		letter-spacing: 0.14em;
+		text-transform: uppercase;
+		color: var(--accent);
+		margin: 0 0 8px;
+	}
+
+	h2 {
+		font-family: var(--heading-font);
+		font-weight: 400;
+		font-size: clamp(26px, 3.8vw, 36px);
+		line-height: 1.08;
+		letter-spacing: -0.01em;
+		margin: 0 0 14px;
+	}
+
+	.jp-area-desc {
+		font-size: 16.5px;
+		color: var(--text);
+		margin: 0;
+		max-width: 42em;
+	}
+
+	.jp-area-bridge {
+		font-size: 15px;
+		color: var(--accent-deep);
+		margin: 16px 0 0;
+		padding: 14px 16px;
+		background: rgba(255, 255, 255, 0.6);
+		border-left: 2px solid var(--accent);
+		border-radius: 0 10px 10px 0;
+		max-width: 42em;
+	}
+
+	@media (max-width: 780px) {
+		.jp-area-row {
+			grid-template-columns: 1fr !important;
+		}
+		.jp-area-img {
+			order: -1;
+		}
+	}
+</style>

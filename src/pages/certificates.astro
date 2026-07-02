@@ -1,0 +1,29 @@
+---
+import { getCollection, getEntry } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import PageHeader from '../components/PageHeader.astro';
+import CertificatesTimeline from '../components/CertificatesTimeline.astro';
+import CertificateLightbox from '../components/CertificateLightbox.astro';
+import Footer from '../components/Footer.astro';
+
+const settingsEntry = await getEntry('settings', 'settings');
+const pageEntry = await getEntry('certificatesPage', 'certificatesPage');
+if (!settingsEntry || !pageEntry) {
+	throw new Error('Missing required singleton content entries: settings/certificatesPage');
+}
+const settings = settingsEntry.data;
+const page = pageEntry.data;
+
+const items = await getCollection('certificates');
+---
+
+<BaseLayout title="Certificates — Julia Pilch, Physiotherapist" description={page.hero.intro}>
+	<Header settings={settings} currentPath="/certificates" />
+	<main>
+		<PageHeader eyebrow={page.hero.eyebrow} heading={page.hero.heading} intro={page.hero.intro} wrapperMaxWidth="44rem" />
+		<CertificatesTimeline items={items} />
+	</main>
+	<Footer settings={settings} />
+	<CertificateLightbox />
+</BaseLayout>

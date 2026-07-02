@@ -1,0 +1,147 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import CoverImage from './CoverImage.astro';
+
+interface Props {
+	expertise: CollectionEntry<'home'>['data']['expertise'];
+	items: CollectionEntry<'expertise'>[];
+}
+
+const { expertise, items } = Astro.props;
+const sorted = [...items].sort((a, b) => a.data.order - b.data.order);
+---
+
+<section id="areas-of-practice" class="jp-expertise">
+	<div class="jp-expertise-header">
+		<div>
+			<p class="jp-eyebrow">{expertise.eyebrow}</p>
+			<h2>{expertise.heading}</h2>
+		</div>
+		<a href={expertise.ctaHref} class="jp-cta-secondary">
+			{expertise.ctaLabel} <span class="jp-arrow">→</span>
+		</a>
+	</div>
+
+	<div class="jp-expertise-grid">
+		{
+			sorted.map((item) => (
+				<article class="jp-card">
+					<CoverImage
+						src={item.data.image}
+						alt={item.data.imageAlt}
+						ratio="1 / 0.82"
+						position={item.data.imagePosition ?? '50% 50%'}
+						radius="11px"
+					/>
+					<div>
+						<h3>{item.data.title}</h3>
+						<p>{item.data.description}</p>
+					</div>
+				</article>
+			))
+		}
+	</div>
+</section>
+
+<style>
+	.jp-expertise {
+		max-width: 1180px;
+		margin: 0 auto;
+		padding: clamp(48px, 7vw, 88px) 20px;
+	}
+
+	.jp-expertise-header {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: flex-end;
+		justify-content: space-between;
+		gap: 16px;
+		margin: 0 0 34px;
+	}
+
+	.jp-eyebrow {
+		font-family: ui-monospace, monospace;
+		font-size: 12px;
+		letter-spacing: 0.18em;
+		text-transform: uppercase;
+		color: var(--accent);
+		margin: 0 0 12px;
+	}
+
+	h2 {
+		font-family: var(--heading-font);
+		font-weight: 400;
+		font-size: clamp(30px, 4.6vw, 44px);
+		line-height: 1.05;
+		letter-spacing: -0.01em;
+		margin: 0;
+		max-width: 13em;
+	}
+
+	.jp-cta-secondary {
+		display: inline-flex;
+		align-items: center;
+		gap: 8px;
+		text-decoration: none;
+		color: #fff;
+		background: var(--accent);
+		font-weight: 600;
+		font-size: 15.5px;
+		padding: 12px 24px;
+		border-radius: 99px;
+		box-shadow: 0 6px 18px rgba(58, 125, 118, 0.22);
+		transition:
+			transform 0.15s,
+			background 0.15s;
+		white-space: nowrap;
+	}
+
+	.jp-cta-secondary:hover {
+		background: var(--accent-deep);
+		transform: translateY(-1px);
+	}
+
+	.jp-arrow {
+		font-size: 17px;
+	}
+
+	.jp-expertise-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+		gap: 16px;
+	}
+
+	.jp-card {
+		position: relative;
+		border: 1px solid var(--border);
+		background: #fff;
+		border-radius: 16px;
+		padding: 18px;
+		display: flex;
+		flex-direction: column;
+		gap: 14px;
+		transition:
+			transform 0.15s,
+			box-shadow 0.15s;
+	}
+
+	.jp-card:hover {
+		transform: translateY(-3px);
+		box-shadow: 0 14px 30px -18px rgba(44, 40, 36, 0.35);
+	}
+
+	.jp-card h3 {
+		font-family: var(--heading-font);
+		font-weight: 500;
+		font-size: 19px;
+		line-height: 1.15;
+		margin: 0 0 6px;
+	}
+
+	.jp-card p {
+		font-size: 14px;
+		color: var(--muted);
+		margin: 0;
+	}
+
+</style>

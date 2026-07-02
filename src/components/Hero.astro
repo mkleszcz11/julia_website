@@ -1,0 +1,176 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import CoverImage from './CoverImage.astro';
+
+interface Props {
+	hero: CollectionEntry<'home'>['data']['hero'];
+}
+
+const { hero } = Astro.props;
+---
+
+<section id="top" class="jp-hero">
+	<div class="jp-hero-grid">
+		<div class="jp-hero-copy">
+			<h1>{hero.name}</h1>
+			<p class="jp-hero-title">{hero.title}</p>
+
+			<div class="jp-badges">
+				{hero.badges.map((badge) => <span class="jp-badge">{badge}</span>)}
+			</div>
+
+			<p class="jp-hero-tagline">{hero.tagline}</p>
+
+			{
+				hero.availability.show && (
+					<div class="jp-availability">
+						<span class="jp-availability-dot" />
+						<p>{hero.availability.text}</p>
+					</div>
+				)
+			}
+
+			<div class="jp-hero-cta-row">
+				<a href={hero.ctaHref} class="jp-cta">
+					{hero.ctaLabel} <span class="jp-arrow">→</span>
+				</a>
+			</div>
+		</div>
+
+		<div class="jp-hero-photo">
+			<CoverImage
+				src={hero.headshotImage}
+				alt={hero.headshotAlt}
+				ratio="4 / 4.6"
+				position={hero.imagePosition ?? '50% 18%'}
+				radius="20px"
+				shadow="0 24px 60px -24px rgba(44, 40, 36, 0.4)"
+			/>
+		</div>
+	</div>
+</section>
+
+<style>
+	.jp-hero {
+		max-width: 1180px;
+		margin: 0 auto;
+		padding: clamp(36px, 6vw, 76px) 20px clamp(40px, 6vw, 72px);
+	}
+
+	.jp-hero-grid {
+		display: grid;
+		grid-template-columns: 1.05fr 0.95fr;
+		gap: clamp(28px, 5vw, 64px);
+		align-items: center;
+	}
+
+	.jp-hero-copy {
+		animation: jpFadeUp 0.6s ease both;
+	}
+
+	.jp-hero-copy h1 {
+		font-family: var(--heading-font);
+		font-weight: 400;
+		font-size: clamp(48px, 9vw, 86px);
+		line-height: 0.98;
+		letter-spacing: -0.02em;
+		margin: 0;
+	}
+
+	.jp-hero-title {
+		font-family: var(--heading-font);
+		font-style: italic;
+		color: var(--accent-deep);
+		font-size: clamp(20px, 3.4vw, 27px);
+		margin: 10px 0 0;
+		letter-spacing: 0.01em;
+	}
+
+	.jp-badges {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 8px 10px;
+		margin: 20px 0 0;
+	}
+
+	.jp-badge {
+		font-size: 13px;
+		color: var(--muted);
+		background: var(--beige);
+		border: 1px solid var(--border);
+		padding: 5px 11px;
+		border-radius: 99px;
+	}
+
+	.jp-hero-tagline {
+		font-size: clamp(17px, 2.3vw, 19px);
+		color: var(--text);
+		margin: 24px 0 0;
+		max-width: 30em;
+	}
+
+	.jp-availability {
+		display: flex;
+		align-items: flex-start;
+		gap: 10px;
+		margin: 22px 0 0;
+		background: #eef4f2;
+		border: 1px solid #d6e6e2;
+		border-radius: 12px;
+		padding: 13px 15px;
+		max-width: 34em;
+	}
+
+	.jp-availability-dot {
+		width: 9px;
+		height: 9px;
+		border-radius: 99px;
+		background: var(--accent);
+		margin-top: 7px;
+		flex-shrink: 0;
+		box-shadow: 0 0 0 4px rgba(58, 125, 118, 0.15);
+	}
+
+	.jp-availability p {
+		margin: 0;
+		font-size: 14.5px;
+		color: var(--accent-deep);
+	}
+
+	.jp-hero-cta-row {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 12px;
+		margin: 28px 0 0;
+	}
+
+	.jp-cta {
+		display: inline-flex;
+		align-items: center;
+		gap: 9px;
+		text-decoration: none;
+		color: #fff;
+		background: var(--accent);
+		font-weight: 600;
+		font-size: 16px;
+		padding: 14px 28px;
+		border-radius: 99px;
+		box-shadow: 0 6px 18px rgba(58, 125, 118, 0.22);
+		transition:
+			transform 0.15s,
+			background 0.15s;
+	}
+
+	.jp-cta:hover {
+		background: var(--accent-deep);
+		transform: translateY(-1px);
+	}
+
+	.jp-arrow {
+		font-size: 18px;
+	}
+
+	.jp-hero-photo {
+		animation: jpFadeUp 0.7s ease both 0.1s;
+	}
+</style>

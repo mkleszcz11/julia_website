@@ -1,0 +1,38 @@
+---
+interface Props {
+	special?: boolean;
+	paddingTop?: string;
+}
+
+const { special = false, paddingTop = '8px' } = Astro.props;
+---
+
+<span class="jp-rail-node" style={{ paddingTop }}>
+	<span class:list={['jp-rail-dot', special && 'jp-rail-dot--special']}></span>
+</span>
+
+<style>
+	.jp-rail-node {
+		position: relative;
+		width: 44px;
+		flex-shrink: 0;
+		display: flex;
+		justify-content: center;
+	}
+
+	.jp-rail-dot {
+		position: relative;
+		z-index: 1;
+		width: 16px;
+		height: 16px;
+		border-radius: 99px;
+		background: #cdbfa8;
+		border: 3px solid var(--bg);
+		box-shadow: 0 0 0 2px var(--border);
+	}
+
+	.jp-rail-dot--special {
+		background: var(--accent);
+		box-shadow: 0 0 0 2px rgba(58, 125, 118, 0.22);
+	}
+</style>

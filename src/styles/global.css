@@ -1,0 +1,92 @@
+:root {
+	--accent: #3a7d76;
+	--accent-deep: #2f655f;
+	--heading-font: 'Spectral', Georgia, serif;
+	--bg: #faf8f4;
+	--beige: #f2ede4;
+	--text: #2c2824;
+	--muted: #6f675d;
+	--border: #e6dfd3;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+html {
+	scroll-behavior: smooth;
+}
+
+body {
+	margin: 0;
+	font-family: 'Hanken Grotesk', system-ui, sans-serif;
+	color: var(--text);
+	background: var(--bg);
+	line-height: 1.6;
+	-webkit-font-smoothing: antialiased;
+	overflow-x: hidden;
+}
+
+@keyframes jpFadeUp {
+	from {
+		opacity: 0;
+		transform: translateY(14px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+::-webkit-scrollbar {
+	height: 8px;
+	width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+	background: #d8cfc1;
+	border-radius: 99px;
+}
+
+@media (max-width: 760px) {
+	.jp-hero-grid,
+	.jp-about-grid,
+	.jp-work-grid,
+	.jp-foot-grid {
+		grid-template-columns: 1fr !important;
+	}
+	.jp-hero-grid {
+		gap: 30px !important;
+	}
+	.jp-about-grid > div:last-child,
+	.jp-work-grid > div:last-child {
+		order: -1;
+	}
+	.jp-foot-grid {
+		gap: 30px !important;
+	}
+	header > div {
+		flex-direction: column;
+		align-items: center;
+		gap: 10px;
+	}
+	header nav {
+		flex-wrap: wrap;
+		white-space: normal;
+		justify-content: center;
+		gap: 4px 6px;
+	}
+	header nav a {
+		font-size: 13.5px !important;
+		padding: 7px 10px !important;
+	}
+}
+
+@media (max-width: 480px) {
+	.jp-foot-grid {
+		grid-template-columns: 1fr 1fr !important;
+	}
+	.jp-foot-grid > div:first-child {
+		grid-column: 1 / -1;
+	}
+}

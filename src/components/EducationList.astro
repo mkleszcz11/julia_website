@@ -1,0 +1,108 @@
+---
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+	copy: CollectionEntry<'about'>['data']['education'];
+	items: CollectionEntry<'education'>[];
+}
+
+const { copy, items } = Astro.props;
+const sorted = [...items].sort((a, b) => a.data.order - b.data.order);
+---
+
+<section class="jp-education">
+	<p class="jp-eyebrow">{copy.eyebrow}</p>
+	<h2>{copy.heading}</h2>
+	<div class="jp-education-list">
+		{
+			sorted.map((entry) => (
+				<article class="jp-education-card jp-edu-grid">
+					<span class="jp-education-years">{entry.data.years}</span>
+					<div>
+						<h3>{entry.data.degree}</h3>
+						<p class="jp-school">{entry.data.school}</p>
+						<p class="jp-place">{entry.data.place}</p>
+					</div>
+				</article>
+			))
+		}
+	</div>
+</section>
+
+<style>
+	.jp-education {
+		max-width: 1180px;
+		margin: 0 auto;
+		padding: clamp(36px, 5vw, 64px) 20px clamp(28px, 4vw, 44px);
+	}
+
+	.jp-eyebrow {
+		font-family: ui-monospace, monospace;
+		font-size: 12px;
+		letter-spacing: 0.18em;
+		text-transform: uppercase;
+		color: var(--accent);
+		margin: 0 0 14px;
+	}
+
+	h2 {
+		font-family: var(--heading-font);
+		font-weight: 400;
+		font-size: clamp(30px, 4.6vw, 44px);
+		line-height: 1.05;
+		letter-spacing: -0.01em;
+		margin: 0 0 30px;
+	}
+
+	.jp-education-list {
+		display: flex;
+		flex-direction: column;
+		gap: 14px;
+	}
+
+	.jp-education-card {
+		display: grid;
+		grid-template-columns: 160px 1fr;
+		gap: clamp(14px, 3vw, 40px);
+		align-items: start;
+		background: #fff;
+		border: 1px solid var(--border);
+		border-radius: 16px;
+		padding: clamp(18px, 2.6vw, 26px);
+	}
+
+	.jp-education-years {
+		font-family: ui-monospace, monospace;
+		font-size: 13px;
+		letter-spacing: 0.04em;
+		color: var(--accent-deep);
+		padding-top: 3px;
+	}
+
+	h3 {
+		font-family: var(--heading-font);
+		font-weight: 500;
+		font-size: clamp(20px, 2.6vw, 24px);
+		line-height: 1.18;
+		margin: 0 0 4px;
+	}
+
+	.jp-school {
+		font-size: 15.5px;
+		color: var(--text);
+		margin: 0 0 2px;
+		font-weight: 600;
+	}
+
+	.jp-place {
+		font-size: 14.5px;
+		color: var(--muted);
+		margin: 0;
+	}
+
+	@media (max-width: 820px) {
+		.jp-edu-grid {
+			grid-template-columns: 1fr !important;
+		}
+	}
+</style>

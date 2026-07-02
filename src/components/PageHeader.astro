@@ -1,0 +1,70 @@
+---
+interface Props {
+	eyebrow: string;
+	heading: string;
+	intro: string;
+	wrapperMaxWidth?: string;
+	headingSize?: string;
+	introFontSize?: string;
+	introColor?: string;
+	introMaxWidth?: string;
+	introMarginTop?: string;
+	paddingBottom?: string;
+}
+
+const {
+	eyebrow,
+	heading,
+	intro,
+	wrapperMaxWidth = '46rem',
+	headingSize = 'clamp(44px, 8vw, 76px)',
+	introFontSize = 'clamp(17px, 2.3vw, 19px)',
+	introColor = 'var(--text)',
+	introMaxWidth,
+	introMarginTop = '22px',
+	paddingBottom = 'clamp(28px, 4vw, 44px)',
+} = Astro.props;
+---
+
+<section class="jp-page-header" style={{ paddingBottom }}>
+	<div class="jp-page-header-inner" style={{ maxWidth: wrapperMaxWidth }}>
+		<p class="jp-eyebrow">{eyebrow}</p>
+		<h1 style={{ fontSize: headingSize }}>{heading}</h1>
+		<p class="jp-intro" style={{ fontSize: introFontSize, color: introColor, maxWidth: introMaxWidth, marginTop: introMarginTop }}>
+			{intro}
+		</p>
+	</div>
+</section>
+
+<style>
+	.jp-page-header {
+		max-width: 1180px;
+		margin: 0 auto;
+		padding: clamp(40px, 6vw, 80px) 20px 0;
+	}
+
+	.jp-page-header-inner {
+		animation: jpFadeUp 0.6s ease both;
+	}
+
+	.jp-eyebrow {
+		font-family: ui-monospace, monospace;
+		font-size: 12px;
+		letter-spacing: 0.18em;
+		text-transform: uppercase;
+		color: var(--accent);
+		margin: 0 0 16px;
+	}
+
+	h1 {
+		font-family: var(--heading-font);
+		font-weight: 400;
+		line-height: 1;
+		letter-spacing: -0.02em;
+		margin: 0;
+	}
+
+	.jp-intro {
+		margin: 22px 0 0;
+	}
+</style>

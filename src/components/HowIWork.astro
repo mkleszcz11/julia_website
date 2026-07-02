@@ -1,0 +1,97 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import CoverImage from './CoverImage.astro';
+
+interface Props {
+	howIWork: CollectionEntry<'home'>['data']['howIWork'];
+}
+
+const { howIWork } = Astro.props;
+---
+
+<section class="jp-work">
+	<div class="jp-work-inner jp-work-grid">
+		<div>
+			<p class="jp-eyebrow">{howIWork.eyebrow}</p>
+			<div class="jp-phrases">
+				{
+					howIWork.phrases.map((phrase, i) => (
+						<>
+							{i > 0 && <span class="jp-dot">·</span>}
+							<span class={i === howIWork.phrases.length - 1 ? 'jp-italic' : ''}>{phrase}</span>
+						</>
+					))
+				}
+			</div>
+			<p class="jp-paragraph">{howIWork.paragraph}</p>
+		</div>
+		<div>
+			<CoverImage
+				src={howIWork.image}
+				alt={howIWork.imageAlt}
+				ratio="4 / 3.2"
+				position={howIWork.imagePosition ?? '50% 50%'}
+				radius="18px"
+				borderColor="rgba(255, 255, 255, 0.16)"
+			/>
+		</div>
+	</div>
+</section>
+
+<style>
+	.jp-work {
+		background: var(--accent-deep);
+		color: #fff;
+	}
+
+	.jp-work-inner {
+		max-width: 1180px;
+		margin: 0 auto;
+		padding: clamp(40px, 6vw, 72px) 20px;
+	}
+
+	.jp-work-grid {
+		display: grid;
+		grid-template-columns: 1fr 0.85fr;
+		gap: clamp(28px, 5vw, 56px);
+		align-items: center;
+	}
+
+	.jp-eyebrow {
+		font-family: ui-monospace, monospace;
+		font-size: 12px;
+		letter-spacing: 0.18em;
+		text-transform: uppercase;
+		color: #a9d2cb;
+		margin: 0 0 16px;
+	}
+
+	.jp-phrases {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		gap: 6px 14px;
+		font-family: var(--heading-font);
+		font-weight: 300;
+		font-size: clamp(26px, 4.4vw, 42px);
+		line-height: 1.18;
+		letter-spacing: -0.01em;
+	}
+
+	.jp-dot {
+		color: #7fb3ab;
+		font-size: 0.7em;
+	}
+
+	.jp-italic {
+		font-style: italic;
+	}
+
+	.jp-paragraph {
+		font-size: 16px;
+		color: #cfe5e1;
+		margin: 22px 0 0;
+		max-width: 34em;
+	}
+
+</style>

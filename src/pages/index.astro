@@ -1,0 +1,37 @@
+---
+import { getCollection, getEntry } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Hero from '../components/Hero.astro';
+import AboutPreview from '../components/AboutPreview.astro';
+import ExpertisePreview from '../components/ExpertisePreview.astro';
+import HowIWork from '../components/HowIWork.astro';
+import ReferencesPreview from '../components/ReferencesPreview.astro';
+import InstagramPreview from '../components/InstagramPreview.astro';
+import Footer from '../components/Footer.astro';
+
+const settingsEntry = await getEntry('settings', 'settings');
+const homeEntry = await getEntry('home', 'home');
+if (!settingsEntry || !homeEntry) {
+	throw new Error('Missing required singleton content entries: settings/home');
+}
+const settings = settingsEntry.data;
+const home = homeEntry.data;
+
+const expertiseItems = (await getCollection('expertise')).filter((item) => item.data.featuredOnHome);
+const referenceItems = (await getCollection('references')).filter((item) => item.data.featuredOnHome);
+const instagramPosts = await getCollection('instagram');
+---
+
+<BaseLayout title="Julia Pilch — Physiotherapist in Trondheim, Norway" description={home.hero.tagline}>
+	<Header settings={settings} />
+	<main>
+		<Hero hero={home.hero} />
+		<AboutPreview about={home.about} />
+		<ExpertisePreview expertise={home.expertise} items={expertiseItems} />
+		<HowIWork howIWork={home.howIWork} />
+		<ReferencesPreview references={home.references} items={referenceItems} />
+		<InstagramPreview instagram={home.instagram} instagramUrl={settings.instagramUrl} posts={instagramPosts} />
+	</main>
+	<Footer settings={settings} />
+</BaseLayout>

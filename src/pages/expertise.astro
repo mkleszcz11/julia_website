@@ -1,0 +1,37 @@
+---
+import { getCollection, getEntry } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import PageHeader from '../components/PageHeader.astro';
+import PracticeAreasList from '../components/PracticeAreasList.astro';
+import ClosingCta from '../components/ClosingCta.astro';
+import Footer from '../components/Footer.astro';
+
+const settingsEntry = await getEntry('settings', 'settings');
+const pageEntry = await getEntry('expertisePage', 'expertisePage');
+if (!settingsEntry || !pageEntry) {
+	throw new Error('Missing required singleton content entries: settings/expertisePage');
+}
+const settings = settingsEntry.data;
+const page = pageEntry.data;
+
+const items = await getCollection('expertise');
+---
+
+<BaseLayout title="Areas of Practice — Julia Pilch, Physiotherapist" description={page.hero.intro}>
+	<Header settings={settings} currentPath="/expertise" />
+	<main>
+		<PageHeader
+			eyebrow={page.hero.eyebrow}
+			heading={page.hero.heading}
+			intro={page.hero.intro}
+			wrapperMaxWidth="46rem"
+			introFontSize="clamp(18px, 2.6vw, 21px)"
+			introMaxWidth="34em"
+			introMarginTop="20px"
+		/>
+		<PracticeAreasList items={items} />
+		<ClosingCta heading={page.closing.heading} ctaLabel={page.closing.ctaLabel} ctaHref={page.closing.ctaHref} variant="beige" />
+	</main>
+	<Footer settings={settings} />
+</BaseLayout>

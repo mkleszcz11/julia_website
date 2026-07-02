@@ -1,0 +1,95 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import CoverImage from './CoverImage.astro';
+
+interface Props {
+	hero: CollectionEntry<'about'>['data']['hero'];
+}
+
+const { hero } = Astro.props;
+---
+
+<section class="jp-about-hero">
+	<div class="jp-about-hero-grid jp-about-grid">
+		<div class="jp-about-hero-copy">
+			<p class="jp-eyebrow">{hero.eyebrow}</p>
+			<h1>{hero.heading}</h1>
+			{hero.intro.map((paragraph, i) => <p class={i === 0 ? 'jp-lead' : 'jp-muted'}>{paragraph}</p>)}
+		</div>
+		<div class="jp-about-img">
+			<CoverImage
+				src={hero.photoImage}
+				alt={hero.photoAlt}
+				ratio="4 / 4.3"
+				position={hero.imagePosition ?? '50% 32%'}
+				radius="20px"
+				shadow="0 24px 60px -24px rgba(44, 40, 36, 0.4)"
+			/>
+		</div>
+	</div>
+</section>
+
+<style>
+	.jp-about-hero {
+		max-width: 1180px;
+		margin: 0 auto;
+		padding: clamp(40px, 6vw, 80px) 20px clamp(36px, 5vw, 56px);
+	}
+
+	.jp-about-hero-grid {
+		display: grid;
+		grid-template-columns: 1.08fr 0.92fr;
+		gap: clamp(28px, 5vw, 64px);
+		align-items: center;
+	}
+
+	.jp-about-hero-copy {
+		animation: jpFadeUp 0.6s ease both;
+	}
+
+	.jp-eyebrow {
+		font-family: ui-monospace, monospace;
+		font-size: 12px;
+		letter-spacing: 0.18em;
+		text-transform: uppercase;
+		color: var(--accent);
+		margin: 0 0 16px;
+	}
+
+	h1 {
+		font-family: var(--heading-font);
+		font-weight: 400;
+		font-size: clamp(44px, 8vw, 76px);
+		line-height: 1;
+		letter-spacing: -0.02em;
+		margin: 0;
+	}
+
+	.jp-lead {
+		font-size: clamp(17px, 2.3vw, 19px);
+		color: var(--text);
+		margin: 24px 0 14px;
+		max-width: 36em;
+	}
+
+	.jp-muted {
+		font-size: clamp(17px, 2.3vw, 19px);
+		color: var(--muted);
+		margin: 0;
+		max-width: 36em;
+	}
+
+	.jp-about-img {
+		animation: jpFadeUp 0.7s ease both 0.1s;
+	}
+
+	@media (max-width: 820px) {
+		.jp-about-hero-grid {
+			grid-template-columns: 1fr !important;
+			gap: 30px !important;
+		}
+		.jp-about-img {
+			order: -1;
+		}
+	}
+</style>

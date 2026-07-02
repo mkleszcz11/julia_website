@@ -1,0 +1,62 @@
+{
+	"home": {
+		"hero": {
+			"name": "Julia Pilch",
+			"title": "Physiotherapist",
+			"badges": [
+				"EU-authorised physiotherapist",
+				"HPR [number]",
+				"Trondheim, Norway"
+			],
+			"tagline": "Physiotherapy grounded in movement, function, and an individual approach.",
+			"availability": {
+				"show": true,
+				"text": "Currently seeking a clinic position in Trondheim \u2014 and learning Norwegian (A1) for the long term."
+			},
+			"ctaLabel": "Get in touch",
+			"ctaHref": "#contact",
+			"headshotAlt": "Julia Pilch, physiotherapist",
+			"headshotImage": "/images/home/profile-picture.png"
+		},
+		"about": {
+			"eyebrow": "About me",
+			"heading": "A versatile physiotherapist who treats the person, not just the diagnosis.",
+			"paragraphs": [
+				"I work across the full musculoskeletal and rehabilitation spectrum \u2014 orthopaedic recovery, sports injuries, post-operative care and therapeutic exercise \u2014 always shaped around the individual in front of me. Alongside that broad practice, I've developed a focused expertise in rehabilitation after amputation and limb loss.",
+				"I'm now looking for a physiotherapy role in a clinic in Trondheim, where I can bring careful, hands-on care to a wide range of patients."
+			],
+			"ctaLabel": "Get to know me better",
+			"ctaHref": "/about",
+			"image": "/images/home/working-photo.png",
+			"imageAlt": "Julia Pilch working with a patient"
+		},
+		"expertise": {
+			"eyebrow": "Areas of practice",
+			"heading": "Broad clinical care, with one standout specialism.",
+			"ctaLabel": "Read more",
+			"ctaHref": "/expertise"
+		},
+		"howIWork": {
+			"eyebrow": "How I work",
+			"phrases": [
+				"manual therapy",
+				"targeted exercise",
+				"an individual approach"
+			],
+			"paragraph": "Every plan starts with assessment and listening \u2014 then combines hands-on treatment with progressive, achievable exercise that fits each person's goals and pace.",
+			"image": "/images/home/clinic-photo.png",
+			"imageAlt": "Julia Pilch in the clinic"
+		},
+		"references": {
+			"eyebrow": "References",
+			"heading": "What colleagues and supervisors say.",
+			"subheading": "Professional endorsements from people I've worked alongside.",
+			"ctaLabel": "See all references",
+			"ctaHref": "/references"
+		},
+		"instagram": {
+			"eyebrowHandle": "@julia.pilch.physio",
+			"ctaLabel": "Follow me on Instagram"
+		}
+	}
+}

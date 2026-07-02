@@ -1,0 +1,32 @@
+{
+	"about": {
+		"hero": {
+			"eyebrow": "About me",
+			"heading": "About me",
+			"intro": [
+				"I'm Julia Pilch, a physiotherapist who believes good rehabilitation starts with really seeing the person in front of me \u2014 their movement, their goals, and the life they're trying to get back to. My practice is grounded in movement, function and an individual approach: I combine careful assessment, hands-on treatment and progressive, achievable exercise rather than a one-size-fits-all protocol.",
+				"I work across the full musculoskeletal and rehabilitation spectrum \u2014 orthopaedic recovery, sports injuries, post-operative care and therapeutic exercise \u2014 and I've built a particular depth in rehabilitation after amputation and limb loss. What I enjoy most is the steady, collaborative work of helping someone move with more confidence than they thought they'd regain."
+			],
+			"photoAlt": "Julia Pilch working in the clinic with an exercise ball",
+			"photoImage": "/images/about/profile-picture.png"
+		},
+		"experience": {
+			"eyebrow": "Experience",
+			"heading": "Experience"
+		},
+		"education": {
+			"eyebrow": "Education",
+			"heading": "Education"
+		},
+		"gallery": {
+			"eyebrow": "In practice",
+			"heading": "In practice",
+			"intro": "Moments from camps, tournaments and events I've supported \u2014 photos and clips to be added."
+		},
+		"closing": {
+			"heading": "I'm ready to bring careful, hands-on care to a Trondheim clinic \u2014 for the long term.",
+			"ctaLabel": "Get in touch",
+			"ctaHref": "#contact"
+		}
+	}
+}

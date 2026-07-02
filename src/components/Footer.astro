@@ -1,0 +1,200 @@
+---
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+	settings: CollectionEntry<'settings'>['data'];
+}
+
+const { settings } = Astro.props;
+const [siteFirst, siteMid, siteLast] = settings.siteName.split('.');
+const year = new Date().getFullYear();
+---
+
+<footer id="contact" class="jp-footer">
+	<div class="jp-footer-inner">
+		<div class="jp-foot-grid">
+			<div>
+				<div class="jp-brand">
+					<span class="jp-brand-mark">{settings.brandInitials}</span>
+					<span class="jp-brand-name">
+						{siteFirst}<span class="jp-dot">.</span>{siteMid}<span class="jp-dot">.</span>{siteLast}
+					</span>
+				</div>
+				<p class="jp-tagline">{settings.tagline}</p>
+			</div>
+
+			<div>
+				<p class="jp-col-label">Navigation</p>
+				<nav>
+					{
+						settings.nav.map((item) => (
+							<a href={item.href} class="jp-nav-link">
+								{item.label}
+							</a>
+						))
+					}
+				</nav>
+			</div>
+
+			<div>
+				<p class="jp-col-label">Contact</p>
+				<div class="jp-contact-list">
+					<a href={`mailto:${settings.email}`} class="jp-contact-link">
+						<span class="jp-contact-icon">✉</span>
+						{settings.email}
+					</a>
+					<a href={settings.instagramUrl} target="_blank" rel="noopener" class="jp-contact-link">
+						<span class="jp-contact-icon jp-contact-icon--instagram">
+							<span class="jp-contact-icon-inner"></span>
+						</span>
+						{settings.instagramHandle}
+					</a>
+				</div>
+			</div>
+		</div>
+
+		<div class="jp-footer-bottom">
+			<span>© {year} {settings.copyrightName} · {settings.title} · {settings.location}</span>
+			<span>{settings.credentialLine}</span>
+		</div>
+	</div>
+</footer>
+
+<style>
+	.jp-footer {
+		background: #26221f;
+		color: #e9e3d9;
+	}
+
+	.jp-footer-inner {
+		max-width: 1180px;
+		margin: 0 auto;
+		padding: clamp(44px, 6vw, 72px) 20px clamp(28px, 4vw, 40px);
+	}
+
+	.jp-foot-grid {
+		display: grid;
+		grid-template-columns: 1.4fr 1fr 1fr;
+		gap: clamp(28px, 5vw, 56px);
+	}
+
+	.jp-brand {
+		display: flex;
+		align-items: center;
+		gap: 10px;
+		margin: 0 0 14px;
+	}
+
+	.jp-brand-mark {
+		width: 36px;
+		height: 36px;
+		border-radius: 9px;
+		border: 1.5px solid #7fb3ab;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		color: #a9d2cb;
+		font-family: var(--heading-font);
+		font-size: 18px;
+	}
+
+	.jp-brand-name {
+		font-weight: 600;
+		font-size: 17px;
+	}
+
+	.jp-dot {
+		color: #8c857a;
+	}
+
+	.jp-tagline {
+		font-family: var(--heading-font);
+		font-style: italic;
+		font-size: 16px;
+		color: #b8b0a2;
+		margin: 0;
+		max-width: 24em;
+	}
+
+	.jp-col-label {
+		font-family: ui-monospace, monospace;
+		font-size: 11px;
+		letter-spacing: 0.16em;
+		text-transform: uppercase;
+		color: #8c857a;
+		margin: 0 0 16px;
+	}
+
+	nav {
+		display: flex;
+		flex-direction: column;
+		gap: 11px;
+	}
+
+	.jp-nav-link {
+		text-decoration: none;
+		color: #e9e3d9;
+		font-size: 15px;
+		width: fit-content;
+		transition: color 0.15s;
+	}
+
+	.jp-nav-link:hover {
+		color: #a9d2cb;
+	}
+
+	.jp-contact-list {
+		display: flex;
+		flex-direction: column;
+		gap: 13px;
+	}
+
+	.jp-contact-link {
+		display: flex;
+		align-items: center;
+		gap: 10px;
+		text-decoration: none;
+		color: #e9e3d9;
+		font-size: 15px;
+		transition: color 0.15s;
+	}
+
+	.jp-contact-link:hover {
+		color: #a9d2cb;
+	}
+
+	.jp-contact-icon {
+		width: 30px;
+		height: 30px;
+		border-radius: 8px;
+		background: #332e2a;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex-shrink: 0;
+		font-size: 14px;
+	}
+
+	.jp-contact-icon--instagram {
+		background: linear-gradient(135deg, #feda75, #d62976 50%, #4f5bd5);
+	}
+
+	.jp-contact-icon-inner {
+		width: 13px;
+		height: 13px;
+		border: 1.6px solid #fff;
+		border-radius: 5px;
+	}
+
+	.jp-footer-bottom {
+		border-top: 1px solid #3a342f;
+		margin-top: clamp(32px, 5vw, 52px);
+		padding-top: 22px;
+		display: flex;
+		flex-wrap: wrap;
+		gap: 8px;
+		justify-content: space-between;
+		font-size: 13px;
+		color: #8c857a;
+	}
+</style>

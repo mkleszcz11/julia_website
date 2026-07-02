@@ -1,0 +1,264 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import TimelineRail from './TimelineRail.astro';
+import TimelineDot from './TimelineDot.astro';
+
+interface Props {
+	items: CollectionEntry<'certificates'>[];
+}
+
+const { items } = Astro.props;
+const sorted = [...items].sort((a, b) => a.data.order - b.data.order);
+---
+
+<section class="jp-certificates">
+	<TimelineRail maxWidth="840px" gap="8px">
+		{
+			sorted.map((entry, i) => {
+				const panelId = `jp-cert-panel-${i}`;
+				return (
+					<li class="jp-cert-item">
+						<TimelineDot special={entry.data.special} paddingTop="18px" />
+						<div class="jp-cert-content">
+							<details class="jp-cert-details">
+								<summary class="jp-cert-summary" aria-controls={panelId}>
+									<span class="jp-cert-summary-text">
+										<span class="jp-cert-title">{entry.data.title}</span>
+										<span class="jp-cert-year">{entry.data.year}</span>
+									</span>
+									<span class="jp-cert-chevron" aria-hidden="true" />
+								</summary>
+								<div id={panelId} class="jp-cert-panel" role="region" aria-label={entry.data.title}>
+									<div>
+										<p class="jp-cert-desc">{entry.data.description}</p>
+										<p class="jp-cert-detail">{entry.data.detail}</p>
+									</div>
+									<button
+										type="button"
+										class="jp-cert-thumb"
+										data-open-lightbox
+										data-cert-title={entry.data.title}
+										data-cert-year={entry.data.year}
+										data-cert-image={entry.data.image}
+										data-cert-position={entry.data.imagePosition ?? '50% 50%'}
+										aria-label={`Enlarge certificate for ${entry.data.title} (${entry.data.year})`}
+									>
+										<span class="jp-cert-thumb-inner">
+											<img
+												src={entry.data.image}
+												alt=""
+												style={{ objectPosition: entry.data.imagePosition ?? '50% 50%' }}
+											/>
+											<span class="jp-cert-thumb-enlarge">⤢ Enlarge</span>
+										</span>
+									</button>
+								</div>
+							</details>
+						</div>
+					</li>
+				);
+			})
+		}
+	</TimelineRail>
+</section>
+
+<style>
+	.jp-certificates {
+		max-width: 1180px;
+		margin: 0 auto;
+		padding: 0 20px clamp(48px, 7vw, 88px);
+	}
+
+	.jp-cert-item {
+		display: flex;
+		align-items: flex-start;
+		gap: clamp(14px, 2.4vw, 26px);
+	}
+
+	.jp-cert-content {
+		flex: 1;
+		min-width: 0;
+		padding-bottom: 8px;
+	}
+
+	.jp-cert-details {
+		width: 100%;
+	}
+
+	.jp-cert-summary {
+		list-style: none;
+		width: 100%;
+		display: flex;
+		align-items: center;
+		gap: 14px;
+		text-align: left;
+		cursor: pointer;
+		background: var(--bg);
+		border: 1px solid var(--border);
+		border-radius: 14px;
+		padding: 14px 18px;
+		font-family: 'Hanken Grotesk', system-ui, sans-serif;
+		transition:
+			background 0.15s,
+			border-color 0.15s,
+			box-shadow 0.15s;
+	}
+
+	.jp-cert-summary::-webkit-details-marker {
+		display: none;
+	}
+
+	.jp-cert-summary:hover {
+		background: #f4efe7;
+		border-color: var(--accent);
+		box-shadow: 0 8px 22px -16px rgba(44, 40, 36, 0.5);
+	}
+
+	.jp-cert-summary:focus-visible {
+		outline: 2px solid var(--accent);
+		outline-offset: 2px;
+	}
+
+	.jp-cert-details[open] .jp-cert-summary {
+		background: #f4efe7;
+		border-color: var(--accent);
+	}
+
+	.jp-cert-summary-text {
+		flex: 1;
+		min-width: 0;
+	}
+
+	.jp-cert-title {
+		display: block;
+		font-family: var(--heading-font);
+		font-weight: 500;
+		font-size: clamp(18px, 2.4vw, 22px);
+		line-height: 1.2;
+		color: var(--text);
+	}
+
+	.jp-cert-year {
+		display: block;
+		font-family: ui-monospace, monospace;
+		font-size: 13px;
+		letter-spacing: 0.04em;
+		color: var(--accent-deep);
+		margin-top: 5px;
+	}
+
+	.jp-cert-chevron {
+		flex-shrink: 0;
+		width: 30px;
+		height: 30px;
+		border-radius: 99px;
+		background: var(--bg);
+		border: 1px solid var(--border);
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		position: relative;
+		transition:
+			transform 0.3s ease,
+			background 0.15s;
+	}
+
+	.jp-cert-chevron::before {
+		content: '';
+		display: block;
+		width: 9px;
+		height: 9px;
+		border-right: 2px solid var(--accent-deep);
+		border-bottom: 2px solid var(--accent-deep);
+		transform: translateY(-2px) rotate(45deg);
+	}
+
+	.jp-cert-details[open] .jp-cert-chevron {
+		transform: rotate(180deg);
+	}
+
+	.jp-cert-panel {
+		display: grid;
+		grid-template-columns: 1fr 200px;
+		gap: clamp(16px, 3vw, 28px);
+		align-items: start;
+		padding: 18px 18px 6px 4px;
+	}
+
+	.jp-cert-desc {
+		font-size: 15.5px;
+		color: var(--text);
+		margin: 0;
+	}
+
+	.jp-cert-detail {
+		font-size: 14px;
+		color: var(--muted);
+		margin: 12px 0 0;
+	}
+
+	.jp-cert-thumb {
+		display: block;
+		width: 100%;
+		cursor: pointer;
+		padding: 0;
+		border: 1px solid var(--border);
+		border-radius: 12px;
+		overflow: hidden;
+		background: transparent;
+		transition:
+			transform 0.15s,
+			box-shadow 0.15s,
+			border-color 0.15s;
+	}
+
+	.jp-cert-thumb:hover {
+		transform: translateY(-2px);
+		box-shadow: 0 14px 30px -18px rgba(44, 40, 36, 0.45);
+		border-color: var(--accent);
+	}
+
+	.jp-cert-thumb:focus-visible {
+		outline: 2px solid var(--accent);
+		outline-offset: 2px;
+	}
+
+	.jp-cert-thumb-inner {
+		position: relative;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		aspect-ratio: 1 / 1.32;
+	}
+
+	.jp-cert-thumb-inner img {
+		display: block;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+
+	.jp-cert-thumb-enlarge {
+		position: absolute;
+		bottom: 8px;
+		right: 8px;
+		display: flex;
+		align-items: center;
+		gap: 5px;
+		background: rgba(38, 34, 31, 0.78);
+		color: #fff;
+		font-size: 10.5px;
+		font-weight: 600;
+		padding: 4px 9px;
+		border-radius: 99px;
+	}
+
+	@media (max-width: 560px) {
+		.jp-cert-panel {
+			grid-template-columns: 1fr !important;
+		}
+		.jp-cert-panel > .jp-cert-thumb {
+			max-width: 200px;
+		}
+	}
+</style>

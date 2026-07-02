@@ -1,0 +1,112 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import CoverImage from './CoverImage.astro';
+
+interface Props {
+	about: CollectionEntry<'home'>['data']['about'];
+}
+
+const { about } = Astro.props;
+---
+
+<section id="about" class="jp-about">
+	<div class="jp-about-inner jp-about-grid">
+		<div>
+			<p class="jp-eyebrow">{about.eyebrow}</p>
+			<h2>{about.heading}</h2>
+			{about.paragraphs.map((paragraph, i) => <p class={i === 0 ? 'jp-lead' : 'jp-muted'}>{paragraph}</p>)}
+			<a href={about.ctaHref} class="jp-cta-secondary">
+				{about.ctaLabel} <span class="jp-arrow">→</span>
+			</a>
+		</div>
+		<div>
+			<CoverImage
+				src={about.image}
+				alt={about.imageAlt}
+				ratio="4 / 3.4"
+				position={about.imagePosition ?? '50% 50%'}
+				radius="18px"
+			/>
+		</div>
+	</div>
+</section>
+
+<style>
+	.jp-about {
+		background: var(--beige);
+		border-top: 1px solid var(--border);
+		border-bottom: 1px solid var(--border);
+	}
+
+	.jp-about-inner {
+		max-width: 1180px;
+		margin: 0 auto;
+		padding: clamp(48px, 7vw, 84px) 20px;
+	}
+
+	.jp-about-grid {
+		display: grid;
+		grid-template-columns: 1.1fr 0.9fr;
+		gap: clamp(28px, 5vw, 60px);
+		align-items: center;
+	}
+
+	.jp-eyebrow {
+		font-family: ui-monospace, monospace;
+		font-size: 12px;
+		letter-spacing: 0.18em;
+		text-transform: uppercase;
+		color: var(--accent);
+		margin: 0 0 14px;
+	}
+
+	h2 {
+		font-family: var(--heading-font);
+		font-weight: 400;
+		font-size: clamp(30px, 4.6vw, 44px);
+		line-height: 1.08;
+		letter-spacing: -0.01em;
+		margin: 0 0 20px;
+	}
+
+	.jp-lead {
+		font-size: 17px;
+		color: var(--text);
+		margin: 0 0 14px;
+		max-width: 38em;
+	}
+
+	.jp-muted {
+		font-size: 17px;
+		color: var(--muted);
+		margin: 0 0 26px;
+		max-width: 38em;
+	}
+
+	.jp-cta-secondary {
+		display: inline-flex;
+		align-items: center;
+		gap: 8px;
+		text-decoration: none;
+		color: #fff;
+		background: var(--accent);
+		font-weight: 600;
+		font-size: 15.5px;
+		padding: 12px 24px;
+		border-radius: 99px;
+		box-shadow: 0 6px 18px rgba(58, 125, 118, 0.22);
+		transition:
+			transform 0.15s,
+			background 0.15s;
+	}
+
+	.jp-cta-secondary:hover {
+		background: var(--accent-deep);
+		transform: translateY(-1px);
+	}
+
+	.jp-arrow {
+		font-size: 17px;
+	}
+
+</style>

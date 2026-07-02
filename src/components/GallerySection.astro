@@ -1,0 +1,86 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import CoverImage from './CoverImage.astro';
+
+interface Props {
+	copy: CollectionEntry<'about'>['data']['gallery'];
+	items: CollectionEntry<'galleryItems'>[];
+}
+
+const { copy, items } = Astro.props;
+const sorted = [...items].sort((a, b) => a.data.order - b.data.order);
+---
+
+<section class="jp-gallery">
+	<p class="jp-eyebrow">{copy.eyebrow}</p>
+	<h2>{copy.heading}</h2>
+	<p class="jp-intro">{copy.intro}</p>
+	<div class="jp-gallery-grid">
+		{
+			sorted.map((item) => (
+				<figure class="jp-gallery-item">
+					<CoverImage
+						src={item.data.image}
+						alt={item.data.imageAlt}
+						ratio="4 / 3"
+						position={item.data.imagePosition ?? '50% 50%'}
+						radius="14px"
+					/>
+					<figcaption>{item.data.caption}</figcaption>
+				</figure>
+			))
+		}
+	</div>
+</section>
+
+<style>
+	.jp-gallery {
+		max-width: 1180px;
+		margin: 0 auto;
+		padding: clamp(36px, 5vw, 64px) 20px clamp(44px, 6vw, 80px);
+	}
+
+	.jp-eyebrow {
+		font-family: ui-monospace, monospace;
+		font-size: 12px;
+		letter-spacing: 0.18em;
+		text-transform: uppercase;
+		color: var(--accent);
+		margin: 0 0 14px;
+	}
+
+	h2 {
+		font-family: var(--heading-font);
+		font-weight: 400;
+		font-size: clamp(30px, 4.6vw, 44px);
+		line-height: 1.05;
+		letter-spacing: -0.01em;
+		margin: 0 0 12px;
+	}
+
+	.jp-intro {
+		font-size: 16px;
+		color: var(--muted);
+		margin: 0 0 30px;
+		max-width: 40em;
+	}
+
+	.jp-gallery-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+		gap: clamp(14px, 2vw, 22px);
+	}
+
+	.jp-gallery-item {
+		margin: 0;
+		display: flex;
+		flex-direction: column;
+		gap: 10px;
+	}
+
+	figcaption {
+		font-size: 14.5px;
+		color: var(--muted);
+		line-height: 1.4;
+	}
+</style>

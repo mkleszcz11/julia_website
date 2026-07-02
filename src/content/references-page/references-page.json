@@ -1,0 +1,19 @@
+{
+	"referencesPage": {
+		"hero": {
+			"eyebrow": "References",
+			"heading": "References",
+			"intro": "What colleagues, supervisors, and clinic partners say about working with me."
+		},
+		"referees": {
+			"eyebrow": "Referees",
+			"heading": "People happy to speak directly about my work.",
+			"note": "Full contact details available on request."
+		},
+		"closing": {
+			"heading": "Want to hear more, or speak to a referee directly?",
+			"ctaLabel": "Get in touch",
+			"ctaHref": "#contact"
+		}
+	}
+}

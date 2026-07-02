@@ -1,0 +1,41 @@
+---
+import { getCollection, getEntry } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import PageHeader from '../components/PageHeader.astro';
+import EndorsementCards from '../components/EndorsementCards.astro';
+import RefereesList from '../components/RefereesList.astro';
+import ClosingCta from '../components/ClosingCta.astro';
+import Footer from '../components/Footer.astro';
+
+const settingsEntry = await getEntry('settings', 'settings');
+const pageEntry = await getEntry('referencesPage', 'referencesPage');
+if (!settingsEntry || !pageEntry) {
+	throw new Error('Missing required singleton content entries: settings/referencesPage');
+}
+const settings = settingsEntry.data;
+const page = pageEntry.data;
+
+const referenceItems = await getCollection('references');
+const refereeItems = await getCollection('referees');
+---
+
+<BaseLayout title="References — Julia Pilch, Physiotherapist" description={page.hero.intro}>
+	<Header settings={settings} currentPath="/references" />
+	<main>
+		<PageHeader
+			eyebrow={page.hero.eyebrow}
+			heading={page.hero.heading}
+			intro={page.hero.intro}
+			wrapperMaxWidth="30em"
+			headingSize="clamp(40px, 7vw, 68px)"
+			introColor="var(--muted)"
+			introMarginTop="18px"
+			paddingBottom="clamp(28px, 4vw, 40px)"
+		/>
+		<EndorsementCards items={referenceItems} />
+		<RefereesList copy={page.referees} items={refereeItems} />
+		<ClosingCta heading={page.closing.heading} ctaLabel={page.closing.ctaLabel} ctaHref={page.closing.ctaHref} variant="plain" />
+	</main>
+	<Footer settings={settings} />
+</BaseLayout>

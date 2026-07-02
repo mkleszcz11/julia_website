@@ -1,0 +1,205 @@
+---
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+	references: CollectionEntry<'home'>['data']['references'];
+	items: CollectionEntry<'references'>[];
+}
+
+const { references, items } = Astro.props;
+const sorted = [...items].sort((a, b) => a.data.order - b.data.order);
+---
+
+<section class="jp-references">
+	<div class="jp-references-header">
+		<div class="jp-references-heading-row">
+			<div>
+				<p class="jp-eyebrow">{references.eyebrow}</p>
+				<h2>{references.heading}</h2>
+			</div>
+			<a href={references.ctaHref} class="jp-cta-secondary">
+				{references.ctaLabel} <span class="jp-arrow">→</span>
+			</a>
+		</div>
+		<p class="jp-subheading">{references.subheading}</p>
+	</div>
+	<div class="jp-references-scroller">
+		<div class="jp-references-track">
+			{
+				sorted.map((ref) => (
+					<figure class="jp-reference-card">
+						<span class="jp-quote-mark" aria-hidden="true">
+							“
+						</span>
+						<blockquote>{ref.data.quote}</blockquote>
+						<figcaption>
+							<span class="jp-initials">{ref.data.initials}</span>
+							<span>
+								<span class="jp-ref-name">{ref.data.name}</span>
+								<span class="jp-ref-role">{ref.data.role}</span>
+							</span>
+						</figcaption>
+					</figure>
+				))
+			}
+			<div class="jp-scroll-spacer" />
+		</div>
+	</div>
+</section>
+
+<style>
+	.jp-references {
+		background: var(--beige);
+		border-bottom: 1px solid var(--border);
+	}
+
+	.jp-references-header {
+		max-width: 1180px;
+		margin: 0 auto;
+		padding: clamp(48px, 7vw, 84px) 20px clamp(40px, 6vw, 72px);
+	}
+
+	.jp-references-heading-row {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: flex-end;
+		justify-content: space-between;
+		gap: 16px;
+		margin: 0 0 8px;
+	}
+
+	.jp-eyebrow {
+		font-family: ui-monospace, monospace;
+		font-size: 12px;
+		letter-spacing: 0.18em;
+		text-transform: uppercase;
+		color: var(--accent);
+		margin: 0 0 12px;
+	}
+
+	h2 {
+		font-family: var(--heading-font);
+		font-weight: 400;
+		font-size: clamp(30px, 4.6vw, 44px);
+		line-height: 1.05;
+		letter-spacing: -0.01em;
+		margin: 0;
+		max-width: 14em;
+	}
+
+	.jp-cta-secondary {
+		display: inline-flex;
+		align-items: center;
+		gap: 8px;
+		text-decoration: none;
+		color: #fff;
+		background: var(--accent);
+		font-weight: 600;
+		font-size: 15.5px;
+		padding: 12px 24px;
+		border-radius: 99px;
+		box-shadow: 0 6px 18px rgba(58, 125, 118, 0.22);
+		transition:
+			transform 0.15s,
+			background 0.15s;
+		white-space: nowrap;
+	}
+
+	.jp-cta-secondary:hover {
+		background: var(--accent-deep);
+		transform: translateY(-1px);
+	}
+
+	.jp-arrow {
+		font-size: 17px;
+	}
+
+	.jp-subheading {
+		font-size: 14px;
+		color: var(--muted);
+		margin: 0;
+	}
+
+	.jp-references-scroller {
+		overflow-x: auto;
+		scroll-snap-type: x mandatory;
+		padding: 0 20px clamp(44px, 6vw, 72px);
+		-webkit-overflow-scrolling: touch;
+	}
+
+	.jp-references-track {
+		display: flex;
+		gap: 18px;
+		max-width: 1180px;
+		margin: 0 auto;
+		width: max-content;
+	}
+
+	.jp-reference-card {
+		scroll-snap-align: start;
+		flex: 0 0 auto;
+		width: min(86vw, 360px);
+		background: var(--bg);
+		border: 1px solid var(--border);
+		border-radius: 18px;
+		padding: 26px;
+		margin: 0;
+		display: flex;
+		flex-direction: column;
+		box-shadow: 0 10px 28px -22px rgba(44, 40, 36, 0.4);
+	}
+
+	.jp-quote-mark {
+		font-family: var(--heading-font);
+		font-size: 42px;
+		line-height: 0.4;
+		color: var(--accent);
+		margin: 8px 0 6px;
+	}
+
+	blockquote {
+		margin: 0 0 20px;
+		font-size: 16.5px;
+		color: var(--text);
+		line-height: 1.55;
+		flex: 1;
+	}
+
+	figcaption {
+		display: flex;
+		align-items: center;
+		gap: 13px;
+		border-top: 1px solid var(--border);
+		padding-top: 16px;
+	}
+
+	.jp-initials {
+		width: 42px;
+		height: 42px;
+		border-radius: 99px;
+		background: #e3dccf;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		font-family: var(--heading-font);
+		font-size: 17px;
+		color: var(--accent-deep);
+		flex-shrink: 0;
+	}
+
+	.jp-ref-name {
+		display: block;
+		font-weight: 600;
+		font-size: 14.5px;
+	}
+
+	.jp-ref-role {
+		display: block;
+		font-size: 13px;
+		color: var(--muted);
+	}
+
+	.jp-scroll-spacer {
+		flex: 0 0 4px;
+	}
+</style>

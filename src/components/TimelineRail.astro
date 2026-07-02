@@ -1,0 +1,38 @@
+---
+interface Props {
+	maxWidth?: string;
+	gap?: string;
+}
+
+const { maxWidth = '760px', gap = 'clamp(20px, 3vw, 34px)' } = Astro.props;
+---
+
+<div class="jp-rail-wrap" style={{ maxWidth }}>
+	<span class="jp-rail-line"></span>
+	<ul class="jp-rail-list" style={{ gap }}>
+		<slot />
+	</ul>
+</div>
+
+<style>
+	.jp-rail-wrap {
+		position: relative;
+	}
+
+	.jp-rail-line {
+		position: absolute;
+		left: 21px;
+		top: 14px;
+		bottom: 14px;
+		width: 2px;
+		background: var(--border);
+	}
+
+	.jp-rail-list {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		display: flex;
+		flex-direction: column;
+	}
+</style>
