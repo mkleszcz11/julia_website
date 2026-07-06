@@ -4,8 +4,8 @@
 			"eyebrow": "About me",
 			"heading": "About me",
 			"intro": [
-				"I'm Julia Pilch, a physiotherapist who believes good rehabilitation starts with really seeing the person in front of me \u2014 their movement, their goals, and the life they're trying to get back to. My practice is grounded in movement, function and an individual approach: I combine careful assessment, hands-on treatment and progressive, achievable exercise rather than a one-size-fits-all protocol.",
-				"I work across the full musculoskeletal and rehabilitation spectrum \u2014 orthopaedic recovery, sports injuries, post-operative care and therapeutic exercise \u2014 and I've built a particular depth in rehabilitation after amputation and limb loss. What I enjoy most is the steady, collaborative work of helping someone move with more confidence than they thought they'd regain."
+				"[Paragraph 1 \u2014 introduce yourself and your overall philosophy of rehabilitation: what you believe good treatment starts with.]",
+				"[Paragraph 2 \u2014 the breadth of your practice (conditions/patients you see) plus your particular area of depth, and what you find most rewarding about the work.]"
 			],
 			"photoAlt": "Julia Pilch working in the clinic with an exercise ball",
 			"photoImage": "/images/about/profile-picture.png"
@@ -24,7 +24,7 @@
 			"intro": "Moments from camps, tournaments and events I've supported \u2014 photos and clips to be added."
 		},
 		"closing": {
-			"heading": "I'm ready to bring careful, hands-on care to a Trondheim clinic \u2014 for the long term.",
+			"heading": "[Closing heading (1 sentence) \u2014 a direct, memorable line encouraging a visitor to get in touch, at the bottom of the About page.]",
 			"ctaLabel": "Get in touch",
 			"ctaHref": "#contact"
 		}

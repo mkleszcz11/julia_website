@@ -13,7 +13,6 @@ const sorted = [...items].sort((a, b) => a.data.order - b.data.order);
 ---
 
 <section class="jp-experience">
-	<p class="jp-eyebrow">{copy.eyebrow}</p>
 	<h2>{copy.heading}</h2>
 
 	<TimelineRail>
@@ -38,15 +37,6 @@ const sorted = [...items].sort((a, b) => a.data.order - b.data.order);
 		max-width: 1180px;
 		margin: 0 auto;
 		padding: clamp(44px, 6vw, 80px) 20px clamp(28px, 4vw, 44px);
-	}
-
-	.jp-eyebrow {
-		font-family: ui-monospace, monospace;
-		font-size: 12px;
-		letter-spacing: 0.18em;
-		text-transform: uppercase;
-		color: var(--accent);
-		margin: 0 0 14px;
 	}
 
 	h2 {

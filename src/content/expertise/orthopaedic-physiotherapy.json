@@ -1,7 +1,7 @@
 {
 	"title": "Orthopaedic physiotherapy",
-	"description": "Recovery after injury, surgery and joint conditions.",
-	"longDescription": "Assessment and hands-on treatment of joint, muscle and post-surgical conditions \u2014 from back and shoulder pain to recovery after orthopaedic procedures. The goal is to restore pain-free movement and rebuild confidence in everyday function.",
+	"description": "[1 short sentence \u2014 what orthopaedic physiotherapy is and what it helps with. Shown as the card preview.]",
+	"longDescription": "[2-3 sentences \u2014 what this involves in practice, who it helps, and your approach. Shown on the full expertise page.]",
 	"order": 1,
 	"featuredOnHome": true,
 	"image": "/images/expertise/orthopaedic-physiotherapy.png",

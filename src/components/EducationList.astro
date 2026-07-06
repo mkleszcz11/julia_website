@@ -11,7 +11,6 @@ const sorted = [...items].sort((a, b) => a.data.order - b.data.order);
 ---
 
 <section class="jp-education">
-	<p class="jp-eyebrow">{copy.eyebrow}</p>
 	<h2>{copy.heading}</h2>
 	<div class="jp-education-list">
 		{
@@ -34,15 +33,6 @@ const sorted = [...items].sort((a, b) => a.data.order - b.data.order);
 		max-width: 1180px;
 		margin: 0 auto;
 		padding: clamp(36px, 5vw, 64px) 20px clamp(28px, 4vw, 44px);
-	}
-
-	.jp-eyebrow {
-		font-family: ui-monospace, monospace;
-		font-size: 12px;
-		letter-spacing: 0.18em;
-		text-transform: uppercase;
-		color: var(--accent);
-		margin: 0 0 14px;
 	}
 
 	h2 {

@@ -20,10 +20,10 @@
 		},
 		"about": {
 			"eyebrow": "About me",
-			"heading": "A versatile physiotherapist who treats the person, not just the diagnosis.",
+			"heading": "A flexible, individual approach to physiotherapy.",
 			"paragraphs": [
-				"I work across the full musculoskeletal and rehabilitation spectrum \u2014 orthopaedic recovery, sports injuries, post-operative care and therapeutic exercise \u2014 always shaped around the individual in front of me. Alongside that broad practice, I've developed a focused expertise in rehabilitation after amputation and limb loss.",
-				"I'm now looking for a physiotherapy role in a clinic in Trondheim, where I can bring careful, hands-on care to a wide range of patients."
+				"[Paragraph 1 \u2014 a couple of sentences on the breadth of your practice: what conditions/patients you work with day to day.]",
+				"[Paragraph 2 \u2014 what you're looking for now, e.g. the kind of role and where.]"
 			],
 			"ctaLabel": "Get to know me better",
 			"ctaHref": "/about",
@@ -32,7 +32,7 @@
 		},
 		"expertise": {
 			"eyebrow": "Areas of practice",
-			"heading": "Broad clinical care, with one standout specialism.",
+			"heading": "Clinical experience across many areas.",
 			"ctaLabel": "Read more",
 			"ctaHref": "/expertise"
 		},
@@ -43,14 +43,14 @@
 				"targeted exercise",
 				"an individual approach"
 			],
-			"paragraph": "Every plan starts with assessment and listening \u2014 then combines hands-on treatment with progressive, achievable exercise that fits each person's goals and pace.",
+			"paragraph": "[1-2 sentences describing your treatment process/method, from first assessment to how a plan is put together.]",
 			"image": "/images/home/clinic-photo.png",
 			"imageAlt": "Julia Pilch in the clinic"
 		},
 		"references": {
 			"eyebrow": "References",
 			"heading": "What colleagues and supervisors say.",
-			"subheading": "Professional endorsements from people I've worked alongside.",
+			"subheading": "[1 short sentence — sets up why these endorsements matter.]",
 			"ctaLabel": "See all references",
 			"ctaHref": "/references"
 		},

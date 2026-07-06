@@ -1,6 +1,5 @@
 ---
 interface Props {
-	eyebrow: string;
 	heading: string;
 	intro: string;
 	wrapperMaxWidth?: string;
@@ -13,7 +12,6 @@ interface Props {
 }
 
 const {
-	eyebrow,
 	heading,
 	intro,
 	wrapperMaxWidth = '46rem',
@@ -28,7 +26,6 @@ const {
 
 <section class="jp-page-header" style={{ paddingBottom }}>
 	<div class="jp-page-header-inner" style={{ maxWidth: wrapperMaxWidth }}>
-		<p class="jp-eyebrow">{eyebrow}</p>
 		<h1 style={{ fontSize: headingSize }}>{heading}</h1>
 		<p class="jp-intro" style={{ fontSize: introFontSize, color: introColor, maxWidth: introMaxWidth, marginTop: introMarginTop }}>
 			{intro}
@@ -45,15 +42,6 @@ const {
 
 	.jp-page-header-inner {
 		animation: jpFadeUp 0.6s ease both;
-	}
-
-	.jp-eyebrow {
-		font-family: ui-monospace, monospace;
-		font-size: 12px;
-		letter-spacing: 0.18em;
-		text-transform: uppercase;
-		color: var(--accent);
-		margin: 0 0 16px;
 	}
 
 	h1 {

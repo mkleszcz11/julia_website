@@ -1,7 +1,7 @@
 {
 	"title": "Sports physiotherapy",
-	"description": "Return-to-sport rehab and injury prevention.",
-	"longDescription": "Management of sports injuries and a clear, staged return-to-sport pathway \u2014 combining manual therapy, load management and movement retraining. Suited to recreational and competitive athletes alike, with a focus on preventing recurrence.",
+	"description": "[1 short sentence \u2014 what sports physiotherapy is and what it helps with. Shown as the card preview.]",
+	"longDescription": "[2-3 sentences \u2014 what this involves in practice, who it helps, and your approach. Shown on the full expertise page.]",
 	"order": 3,
 	"featuredOnHome": true,
 	"image": "/images/expertise/sports-physiotherapy.png",

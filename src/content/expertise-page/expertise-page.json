@@ -3,10 +3,10 @@
 		"hero": {
 			"eyebrow": "Areas of clinical competence",
 			"heading": "Areas of practice",
-			"intro": "Full-spectrum rehabilitation, with a particular depth in amputee and limb-loss recovery."
+			"intro": "[1 short sentence summarising your range of practice, plus your standout specialism.]"
 		},
 		"closing": {
-			"heading": "Broad competence, one memorable specialism — ready to bring both to a clinic in Trondheim.",
+			"heading": "[Closing heading (1 sentence) — a memorable line about what you offer, closing out the Areas of practice page.]",
 			"ctaLabel": "Get in touch",
 			"ctaHref": "#contact"
 		}

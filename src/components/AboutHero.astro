@@ -12,7 +12,6 @@ const { hero } = Astro.props;
 <section class="jp-about-hero">
 	<div class="jp-about-hero-grid jp-about-grid">
 		<div class="jp-about-hero-copy">
-			<p class="jp-eyebrow">{hero.eyebrow}</p>
 			<h1>{hero.heading}</h1>
 			{hero.intro.map((paragraph, i) => <p class={i === 0 ? 'jp-lead' : 'jp-muted'}>{paragraph}</p>)}
 		</div>
@@ -45,15 +44,6 @@ const { hero } = Astro.props;
 
 	.jp-about-hero-copy {
 		animation: jpFadeUp 0.6s ease both;
-	}
-
-	.jp-eyebrow {
-		font-family: ui-monospace, monospace;
-		font-size: 12px;
-		letter-spacing: 0.18em;
-		text-transform: uppercase;
-		color: var(--accent);
-		margin: 0 0 16px;
 	}
 
 	h1 {

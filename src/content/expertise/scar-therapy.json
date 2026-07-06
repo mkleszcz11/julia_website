@@ -1,7 +1,7 @@
 {
 	"title": "Scar therapy",
-	"description": "Mobilising scar tissue to restore movement and comfort.",
-	"longDescription": "Targeted mobilisation of scar tissue after surgery or injury to improve tissue glide, reduce adhesions and restore comfortable movement. Often the quiet final step that lets a fuller rehabilitation programme fully succeed.",
+	"description": "[1 short sentence — what scar therapy is and what it helps with. Shown as the card preview.]",
+	"longDescription": "[2-3 sentences — what this involves in practice, who it helps, and your approach. Shown on the full expertise page.]",
 	"order": 5,
 	"featuredOnHome": true,
 	"image": "/images/expertise/scar-therapy.png",

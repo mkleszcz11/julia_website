@@ -3,7 +3,7 @@
 		"brandInitials": "jp",
 		"siteName": "julia.pilch.physio",
 		"title": "Physiotherapist",
-		"tagline": "Physiotherapy grounded in movement, function, and an individual approach.",
+		"tagline": "[One-line mission statement — your approach to physiotherapy, in a single sentence. Shown in the site footer.]",
 		"nav": [
 			{ "label": "About me", "href": "/about" },
 			{ "label": "Areas of practice", "href": "/expertise" },
