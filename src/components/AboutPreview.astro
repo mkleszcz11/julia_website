@@ -12,14 +12,6 @@ const { about } = Astro.props;
 <section id="about" class="jp-about">
 	<div class="jp-about-inner jp-about-grid">
 		<div>
-			<p class="jp-eyebrow">{about.eyebrow}</p>
-			<h2>{about.heading}</h2>
-			{about.paragraphs.map((paragraph, i) => <p class={i === 0 ? 'jp-lead' : 'jp-muted'}>{paragraph}</p>)}
-			<a href={about.ctaHref} class="jp-cta-secondary">
-				{about.ctaLabel} <span class="jp-arrow">→</span>
-			</a>
-		</div>
-		<div>
 			<CoverImage
 				src={about.image}
 				alt={about.imageAlt}
@@ -27,6 +19,14 @@ const { about } = Astro.props;
 				position={about.imagePosition ?? '50% 50%'}
 				radius="18px"
 			/>
+		</div>
+		<div>
+			<p class="jp-eyebrow">{about.eyebrow}</p>
+			<h2>{about.heading}</h2>
+			{about.paragraphs.map((paragraph, i) => <p class={i === 0 ? 'jp-lead' : 'jp-muted'}>{paragraph}</p>)}
+			<a href={about.ctaHref} class="jp-cta-secondary">
+				{about.ctaLabel} <span class="jp-arrow">→</span>
+			</a>
 		</div>
 	</div>
 </section>
@@ -46,7 +46,7 @@ const { about } = Astro.props;
 
 	.jp-about-grid {
 		display: grid;
-		grid-template-columns: 1.1fr 0.9fr;
+		grid-template-columns: 0.9fr 1.1fr;
 		gap: clamp(28px, 5vw, 60px);
 		align-items: center;
 	}

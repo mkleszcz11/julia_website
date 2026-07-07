@@ -142,6 +142,7 @@ const education = defineCollection({
 		degree: z.string(),
 		school: z.string(),
 		place: z.string(),
+		highlights: z.array(z.string()).optional(),
 		order: z.number(),
 	}),
 });

@@ -22,8 +22,8 @@ const sorted = [...items].sort((a, b) => a.data.order - b.data.order);
 					<TimelineDot special={entry.data.special} />
 					<div class="jp-experience-content">
 						<p class="jp-dates">{entry.data.dates}</p>
-						<h3>{entry.data.role}</h3>
-						<p class="jp-employer">{entry.data.employer}</p>
+						<h3>{entry.data.employer}</h3>
+						<p class="jp-role">{entry.data.role}</p>
 						<p class="jp-desc">{entry.data.description}</p>
 					</div>
 				</li>
@@ -78,7 +78,7 @@ const sorted = [...items].sort((a, b) => a.data.order - b.data.order);
 		color: var(--text);
 	}
 
-	.jp-employer {
+	.jp-role {
 		font-size: 15px;
 		color: var(--muted);
 		margin: 0 0 10px;
