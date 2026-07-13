@@ -20,7 +20,7 @@ const sorted = [...items].sort((a, b) => a.data.order - b.data.order);
 					<li class="jp-cert-item">
 						<TimelineDot special={entry.data.special} paddingTop="18px" />
 						<div class="jp-cert-content">
-							<details class="jp-cert-details">
+							<details class:list={['jp-cert-details', entry.data.special && 'jp-cert-details--special']}>
 								<summary class="jp-cert-summary" aria-controls={panelId}>
 									<span class="jp-cert-summary-text">
 										<span class="jp-cert-title">{entry.data.title}</span>
@@ -121,6 +121,17 @@ const sorted = [...items].sort((a, b) => a.data.order - b.data.order);
 
 	.jp-cert-details[open] .jp-cert-summary {
 		background: #f4efe7;
+		border-color: var(--accent);
+	}
+
+	.jp-cert-details--special .jp-cert-summary {
+		background: #eef4f2;
+		border-color: #cfe2dd;
+	}
+
+	.jp-cert-details--special .jp-cert-summary:hover,
+	.jp-cert-details--special[open] .jp-cert-summary {
+		background: #e3ede9;
 		border-color: var(--accent);
 	}
 
@@ -228,14 +239,16 @@ const sorted = [...items].sort((a, b) => a.data.order - b.data.order);
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		aspect-ratio: 1 / 1.32;
+		background: var(--bg);
 	}
 
 	.jp-cert-thumb-inner img {
 		display: block;
-		width: 100%;
-		height: 100%;
-		object-fit: cover;
+		width: auto;
+		height: auto;
+		max-width: 100%;
+		max-height: 260px;
+		object-fit: contain;
 	}
 
 	.jp-cert-thumb-enlarge {

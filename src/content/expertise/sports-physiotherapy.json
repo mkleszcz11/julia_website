@@ -1,7 +1,7 @@
 {
 	"title": "Sports physiotherapy",
-	"description": "[1 short sentence \u2014 what sports physiotherapy is and what it helps with. Shown as the card preview.]",
-	"longDescription": "[2-3 sentences \u2014 what this involves in practice, who it helps, and your approach. Shown on the full expertise page.]",
+	"description": "Specialised physiotherapy for athletes recovering from injury and returning to sport.",
+	"longDescription": "Sports physiotherapy is designed for athletes and physically active individuals recovering from injury or aiming to optimise performance. Treatment combines thorough assessment, manual therapy, and sport-specific rehabilitation to restore strength, mobility, and movement quality. The goal is a safe, confident return to training and competition while reducing the risk of re-injury.",
 	"order": 3,
 	"featuredOnHome": true,
 	"image": "/images/expertise/sports-physiotherapy.png",

@@ -1,9 +1,9 @@
 {
-	"title": "[course name]",
-	"year": "2023",
+	"title": "Classic Massage",
+	"year": "2021",
 	"description": "[1-2 sentences — what this course covered and what skills/techniques you gained.]",
-	"detail": "[Course provider] \u00b7 [hours / certificate no.]",
+	"detail": "\"Bio-Relax\" · 60 didactic hours · Kraków, 26.03.2021 · Certificate No. 18/KLAS/Kr/21",
 	"special": false,
-	"order": 4,
-	"image": "/images/certificates/classic-massage.png"
+	"order": 9,
+	"image": "/images/certificates/classic-massage.jpg"
 }

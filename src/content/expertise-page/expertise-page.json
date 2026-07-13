@@ -3,10 +3,10 @@
 		"hero": {
 			"eyebrow": "Areas of clinical competence",
 			"heading": "Areas of practice",
-			"intro": "[1 short sentence summarising your range of practice, plus your standout specialism.]"
+			"intro": "Working across orthopaedic, sports, and post-surgical rehabilitation, with a special focus on movement re-education for complex cases."
 		},
 		"closing": {
-			"heading": "[Closing heading (1 sentence) — a memorable line about what you offer, closing out the Areas of practice page.]",
+			"heading": "From recovery to performance, every step is tailored to your goals.",
 			"ctaLabel": "Get in touch",
 			"ctaHref": "#contact"
 		}

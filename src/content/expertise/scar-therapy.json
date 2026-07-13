@@ -1,7 +1,7 @@
 {
 	"title": "Scar therapy",
-	"description": "[1 short sentence — what scar therapy is and what it helps with. Shown as the card preview.]",
-	"longDescription": "[2-3 sentences — what this involves in practice, who it helps, and your approach. Shown on the full expertise page.]",
+	"description": "Focused on reducing scar-related limitations and improving overall tissue function.",
+	"longDescription": "Scar therapy focuses on supporting the healing process and restoring tissue mobility through techniques adapted to each stage of recovery. Treatment methods are selected based on the type of scar, healing phase, and individual needs, and may include manual therapy, soft tissue techniques, and movement-based approaches to improve tissue function.",
 	"order": 5,
 	"featuredOnHome": true,
 	"image": "/images/expertise/scar-therapy.png",

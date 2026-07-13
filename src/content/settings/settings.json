@@ -3,7 +3,7 @@
 		"brandInitials": "jp",
 		"siteName": "julia.pilch.physio",
 		"title": "Physiotherapist",
-		"tagline": "[One-line mission statement — your approach to physiotherapy, in a single sentence. Shown in the site footer.]",
+		"tagline": "Restoring movement. Building strength. Improving function.",
 		"nav": [
 			{ "label": "About me", "href": "/about" },
 			{ "label": "Areas of practice", "href": "/expertise" },

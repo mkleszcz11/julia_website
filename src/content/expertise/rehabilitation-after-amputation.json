@@ -1,8 +1,7 @@
 {
 	"title": "Rehabilitation after amputation",
-	"description": "[1 short sentence \u2014 what this specialism is and what it helps with. Shown as the card preview.]",
-	"longDescription": "[2-3 sentences \u2014 what this involves in practice, who it helps, and your approach. This is your standout specialism, so make it count. Shown on the full expertise page.]",
-	"bridge": "[Optional 1-sentence bridge \u2014 how this specialism sharpens or connects back to your broader practice.]",
+	"description": "Treatment focused on prosthetic training, gait re-education, and functional mobility.",
+	"longDescription": "Rehabilitation after amputation supports recovery before and after prosthetic fitting, helping individuals adapt to changes in movement and regain functional independence. Treatment may include residual limb care, scar management, balance and strength training, prosthetic gait training, and movement re-education. Every rehabilitation program is tailored to the individual's goals, whether returning to daily activities, work, or sport.",
 	"special": true,
 	"order": 4,
 	"featuredOnHome": true,

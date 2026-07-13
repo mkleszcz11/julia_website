@@ -1,7 +1,7 @@
 {
 	"title": "Orthopaedic physiotherapy",
-	"description": "[1 short sentence \u2014 what orthopaedic physiotherapy is and what it helps with. Shown as the card preview.]",
-	"longDescription": "[2-3 sentences \u2014 what this involves in practice, who it helps, and your approach. Shown on the full expertise page.]",
+	"description": "Physiotherapy for post-operative recovery, ligament reconstruction, spinal conditions, and orthopaedic injuries.",
+	"longDescription": "Orthopaedic physiotherapy focuses on the assessment and treatment of musculoskeletal conditions, including injuries, post-operative recovery, joint problems, spinal conditions, and soft tissue disorders. Treatment is individually tailored and may include manual therapy, movement assessment, and exercise-based rehabilitation to restore mobility, strength, and function.",
 	"order": 1,
 	"featuredOnHome": true,
 	"image": "/images/expertise/orthopaedic-physiotherapy.png",

@@ -1,7 +1,7 @@
 {
 	"title": "Medical training therapy",
-	"description": "[1 short sentence — what medical training therapy is and what it helps with. Shown as the card preview.]",
-	"longDescription": "[2-3 sentences — what this involves in practice, who it helps, and your approach. Shown on the full expertise page.]",
+	"description": "Targeted exercise programs to restore movement, build strength, and prevent re-injury.",
+	"longDescription": "Medical training therapy is a structured, exercise-based approach that combines physiotherapy knowledge with targeted strength, mobility, and functional training. Programs are individually adapted based on each patient's condition, goals, and level of ability, with a focus on long-term recovery and prevention of future problems.",
 	"order": 2,
 	"featuredOnHome": true,
 	"image": "/images/expertise/medical-training-therapy.png",
