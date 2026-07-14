@@ -11,7 +11,7 @@
 			"tagline": "Physiotherapy grounded in movement, function, and an individual approach.",
 			"availability": {
 				"show": true,
-				"text": "Currently seeking a clinic position in Trondheim — and learning Norwegian (A1) for the long term."
+				"text": "Currently seeking a clinic position in Trondheim - and learning Norwegian (A1) for the long term."
 			},
 			"ctaLabel": "Get in touch",
 			"ctaHref": "#contact",
@@ -50,7 +50,7 @@
 		"references": {
 			"eyebrow": "References",
 			"heading": "What colleagues and supervisors say.",
-			"subheading": "[1 short sentence — sets up why these endorsements matter.]",
+			"subheading": "[1 short sentence - sets up why these endorsements matter.]",
 			"ctaLabel": "See all references",
 			"ctaHref": "/references"
 		},

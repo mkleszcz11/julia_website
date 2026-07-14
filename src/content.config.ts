@@ -128,6 +128,7 @@ const experience = defineCollection({
 	schema: z.object({
 		dates: z.string(),
 		role: z.string(),
+		location: z.string().optional(),
 		employer: z.string(),
 		description: z.string(),
 		special: z.boolean().default(false),

@@ -23,7 +23,12 @@ const sorted = [...items].sort((a, b) => a.data.order - b.data.order);
 					<div class="jp-experience-content">
 						<p class="jp-dates">{entry.data.dates}</p>
 						<h3>{entry.data.employer}</h3>
-						<p class="jp-role">{entry.data.role}</p>
+						<p class="jp-role">
+							<span class="jp-role-title">{entry.data.role}</span>
+							{entry.data.location && (
+								<span class="jp-role-loc"> · {entry.data.location}</span>
+							)}
+						</p>
 						<p class="jp-desc">{entry.data.description}</p>
 					</div>
 				</li>
@@ -80,8 +85,16 @@ const sorted = [...items].sort((a, b) => a.data.order - b.data.order);
 
 	.jp-role {
 		font-size: 15px;
-		color: var(--muted);
 		margin: 0 0 10px;
+	}
+
+	.jp-role-title {
+		color: var(--text);
+		font-weight: 500;
+	}
+
+	.jp-role-loc {
+		color: var(--muted);
 	}
 
 	.jp-desc {

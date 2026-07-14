@@ -1,8 +1,9 @@
 {
 	"dates": "2023 – 2026",
-	"role": "Physiotherapist · Kraków, Poland",
+	"role": "Physiotherapist",
+	"location": "Kraków, Poland",
 	"employer": "Rehabilitation Centre \"Znowu w Biegu\"",
-	"description": "Assessed and treated patients with musculoskeletal and sports-related conditions, with a focus on rehabilitation following limb amputation and prosthetic gait training. Applied manual therapy, soft tissue techniques, scar management and medical exercise therapy, including kinesiology taping, flossing, pinotherapy and cupping, and led rehabilitation programmes for women following mastectomy.",
+	"description": "Assessed and treated patients with musculoskeletal and sports-related conditions, including rehabilitation following limb amputation with prosthetic gait training. Used manual therapy, soft tissue techniques and scar management alongside medical exercise therapy and functional training, applying adjunctive techniques such as kinesiology taping, flossing, pinotherapy and cupping. Delivered rehabilitation programmes for women following mastectomy.",
 	"special": true,
 	"order": 1
 }

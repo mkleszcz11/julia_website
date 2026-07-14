@@ -1,9 +1,9 @@
 {
 	"title": "Medical Trainer Certificate",
 	"year": "2025",
-	"description": "[1-2 sentences — what this course covered and what skills/techniques you gained.]",
-	"detail": "Rockfit Academy · 32 in-person training hours · 16.02.2025",
+	"description": "A 32-hour course on strength training for patients in rehabilitation: how to load tissue safely after an injury or surgery, how to select and progress exercises, and how to follow the patient's response. It ended with a written exam.",
+	"detail": "RockFit Academy · 32 in-person training hours + final exam · 16.02.2025",
 	"special": true,
-	"order": 2,
+	"order": 4,
 	"image": "/images/certificates/medical-trainer-certificate.jpg"
 }

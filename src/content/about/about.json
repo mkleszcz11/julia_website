@@ -4,8 +4,8 @@
 			"eyebrow": "About me",
 			"heading": "About me",
 			"intro": [
-				"[Paragraph 1 \u2014 introduce yourself and your overall philosophy of rehabilitation: what you believe good treatment starts with.]",
-				"[Paragraph 2 \u2014 the breadth of your practice (conditions/patients you see) plus your particular area of depth, and what you find most rewarding about the work.]"
+				"[Paragraph 1 - introduce yourself and your overall philosophy of rehabilitation: what you believe good treatment starts with.]",
+				"[Paragraph 2 - the breadth of your practice (conditions/patients you see) plus your particular area of depth, and what you find most rewarding about the work.]"
 			],
 			"photoAlt": "Julia Pilch working in the clinic with an exercise ball",
 			"photoImage": "/images/about/profile-picture.png"
@@ -21,10 +21,10 @@
 		"gallery": {
 			"eyebrow": "In practice",
 			"heading": "In practice",
-			"intro": "Moments from camps, tournaments and events I've supported \u2014 photos and clips to be added."
+			"intro": "Moments from camps, tournaments and events I've supported - photos and clips to be added."
 		},
 		"closing": {
-			"heading": "[Closing heading (1 sentence) \u2014 a direct, memorable line encouraging a visitor to get in touch, at the bottom of the About page.]",
+			"heading": "[Closing heading (1 sentence) - a direct, memorable line encouraging a visitor to get in touch, at the bottom of the About page.]",
 			"ctaLabel": "Get in touch",
 			"ctaHref": "#contact"
 		}

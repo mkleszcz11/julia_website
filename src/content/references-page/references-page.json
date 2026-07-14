@@ -3,7 +3,7 @@
 		"hero": {
 			"eyebrow": "References",
 			"heading": "References",
-			"intro": "[1 short sentence introducing this page — the kind of people whose references follow.]"
+			"intro": "[1 short sentence introducing this page - the kind of people whose references follow.]"
 		},
 		"referees": {
 			"eyebrow": "Referees",
@@ -11,7 +11,7 @@
 			"note": "Full contact details available on request."
 		},
 		"closing": {
-			"heading": "[Closing heading (1 sentence) — invites the visitor to get in touch or contact a referee, closing out the References page.]",
+			"heading": "[Closing heading (1 sentence) - invites the visitor to get in touch or contact a referee, closing out the References page.]",
 			"ctaLabel": "Get in touch",
 			"ctaHref": "#contact"
 		}
