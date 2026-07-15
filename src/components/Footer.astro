@@ -49,6 +49,14 @@ const year = new Date().getFullYear();
 						</span>
 						{settings.instagramHandle}
 					</a>
+					<a href={settings.linkedinUrl} target="_blank" rel="noopener" class="jp-contact-link">
+						<span class="jp-contact-icon jp-contact-icon--linkedin">
+							<svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor" aria-hidden="true">
+								<path d="M4.98 3.5A2.5 2.5 0 1 1 0 3.5a2.5 2.5 0 0 1 4.98 0ZM.24 8.06h4.48V24H.24V8.06Zm7.86 0h4.29v2.18h.06c.6-1.13 2.06-2.32 4.24-2.32 4.53 0 5.37 2.98 5.37 6.86V24h-4.48v-7.34c0-1.75-.03-4-2.44-4-2.44 0-2.81 1.9-2.81 3.87V24H8.1V8.06Z"/>
+							</svg>
+						</span>
+						{settings.linkedinHandle}
+					</a>
 				</div>
 			</div>
 		</div>
@@ -184,6 +192,11 @@ const year = new Date().getFullYear();
 		height: 13px;
 		border: 1.6px solid #fff;
 		border-radius: 5px;
+	}
+
+	.jp-contact-icon--linkedin {
+		background: #0a66c2;
+		color: #fff;
 	}
 
 	.jp-footer-bottom {

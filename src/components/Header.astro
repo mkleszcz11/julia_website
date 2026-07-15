@@ -73,6 +73,17 @@ const brandHref = isHome ? '#top' : '/';
 		gap: 10px;
 		text-decoration: none;
 		color: var(--text);
+		cursor: pointer;
+		transition: color 0.15s;
+	}
+
+	.jp-brand:hover {
+		color: var(--accent);
+	}
+
+	.jp-brand:hover .jp-brand-mark {
+		border-color: var(--accent-deep);
+		color: var(--accent-deep);
 	}
 
 	.jp-brand-mark {

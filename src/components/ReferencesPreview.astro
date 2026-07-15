@@ -23,26 +23,24 @@ const sorted = [...items].sort((a, b) => a.data.order - b.data.order);
 		</div>
 		<p class="jp-subheading">{references.subheading}</p>
 	</div>
-	<div class="jp-references-scroller">
-		<div class="jp-references-track">
+	<div class="jp-references-grid-wrap">
+		<div class="jp-references-grid">
 			{
 				sorted.map((ref) => (
 					<figure class="jp-reference-card">
-						<span class="jp-quote-mark" aria-hidden="true">
-							“
-						</span>
 						<blockquote>{ref.data.quote}</blockquote>
 						<figcaption>
 							<span class="jp-initials">{ref.data.initials}</span>
 							<span>
 								<span class="jp-ref-name">{ref.data.name}</span>
-								<span class="jp-ref-role">{ref.data.role}</span>
+								{ref.data.role.split('·').map((part, i) => (
+									<span class:list={['jp-ref-role', i === 0 && 'jp-ref-role--title']}>{part.trim()}</span>
+								))}
 							</span>
 						</figcaption>
 					</figure>
 				))
 			}
-			<div class="jp-scroll-spacer" />
 		</div>
 	</div>
 </section>
@@ -120,25 +118,19 @@ const sorted = [...items].sort((a, b) => a.data.order - b.data.order);
 		margin: 0;
 	}
 
-	.jp-references-scroller {
-		overflow-x: auto;
-		scroll-snap-type: x mandatory;
+	.jp-references-grid-wrap {
 		padding: 0 20px clamp(44px, 6vw, 72px);
-		-webkit-overflow-scrolling: touch;
 	}
 
-	.jp-references-track {
-		display: flex;
-		gap: 18px;
+	.jp-references-grid {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 22px;
 		max-width: 1180px;
 		margin: 0 auto;
-		width: max-content;
 	}
 
 	.jp-reference-card {
-		scroll-snap-align: start;
-		flex: 0 0 auto;
-		width: min(86vw, 360px);
 		background: var(--bg);
 		border: 1px solid var(--border);
 		border-radius: 18px;
@@ -149,16 +141,8 @@ const sorted = [...items].sort((a, b) => a.data.order - b.data.order);
 		box-shadow: 0 10px 28px -22px rgba(44, 40, 36, 0.4);
 	}
 
-	.jp-quote-mark {
-		font-family: var(--heading-font);
-		font-size: 42px;
-		line-height: 0.4;
-		color: var(--accent);
-		margin: 8px 0 6px;
-	}
-
 	blockquote {
-		margin: 0 0 20px;
+		margin: 8px 0 20px;
 		font-size: 16.5px;
 		color: var(--text);
 		line-height: 1.55;
@@ -196,10 +180,18 @@ const sorted = [...items].sort((a, b) => a.data.order - b.data.order);
 	.jp-ref-role {
 		display: block;
 		font-size: 13px;
+		line-height: 1.4;
 		color: var(--muted);
 	}
 
-	.jp-scroll-spacer {
-		flex: 0 0 4px;
+	.jp-ref-role--title {
+		color: var(--text);
+	}
+
+	@media (max-width: 860px) {
+		.jp-references-grid {
+			grid-template-columns: 1fr;
+			max-width: 480px;
+		}
 	}
 </style>

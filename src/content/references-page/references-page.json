@@ -3,15 +3,10 @@
 		"hero": {
 			"eyebrow": "References",
 			"heading": "References",
-			"intro": "[1 short sentence introducing this page - the kind of people whose references follow.]"
-		},
-		"referees": {
-			"eyebrow": "Referees",
-			"heading": "People happy to speak directly about my work.",
-			"note": "Full contact details available on request."
+			"intro": "Recommendations from supervisors, educators, and healthcare professionals who have worked with me throughout my education and clinical practice. Happy to share more contact details on request."
 		},
 		"closing": {
-			"heading": "[Closing heading (1 sentence) - invites the visitor to get in touch or contact a referee, closing out the References page.]",
+			"heading": "If you would like to know more about my experience, qualifications, or approach to physiotherapy, please feel free to get in touch.",
 			"ctaLabel": "Get in touch",
 			"ctaHref": "#contact"
 		}

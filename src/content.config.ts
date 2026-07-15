@@ -24,6 +24,8 @@ const settings = defineCollection({
 		email: z.string().email(),
 		instagramHandle: z.string(),
 		instagramUrl: z.string().url(),
+		linkedinHandle: z.string(),
+		linkedinUrl: z.string().url(),
 		location: z.string(),
 		credentialLine: z.string(),
 		copyrightName: z.string(),
@@ -222,11 +224,6 @@ const referencesPage = defineCollection({
 			heading: z.string(),
 			intro: z.string(),
 		}),
-		referees: z.object({
-			eyebrow: z.string(),
-			heading: z.string(),
-			note: z.string(),
-		}),
 		closing: closingCta,
 	}),
 });
@@ -234,27 +231,26 @@ const referencesPage = defineCollection({
 const references = defineCollection({
 	loader: glob({ pattern: '**/*.json', base: 'src/content/references' }),
 	schema: z.object({
+		// `quote` is the short preview shown in the homepage scroller;
+		// `longQuote` is the full quote shown on every References-page card.
 		quote: z.string(),
-		longQuote: z.string().optional(),
+		longQuote: z.string(),
 		name: z.string(),
 		role: z.string(),
 		relation: z.string().optional(),
 		initials: z.string(),
+		// The full reference document a visitor can open from the card.
+		// `type` drives the card's link label/icon; `href` is a path under
+		// /public. `label` optionally overrides the default link text.
+		document: z.object({
+			href: z.string(),
+			type: z.enum(['pdf', 'image']),
+			label: z.string().optional(),
+		}),
 		highlighted: z.boolean().default(false),
 		order: z.number(),
 		pageOrder: z.number(),
 		featuredOnHome: z.boolean().default(false),
-	}),
-});
-
-const referees = defineCollection({
-	loader: glob({ pattern: '**/*.json', base: 'src/content/referees' }),
-	schema: z.object({
-		name: z.string(),
-		role: z.string(),
-		relation: z.string(),
-		initials: z.string(),
-		order: z.number(),
 	}),
 });
 
@@ -282,6 +278,5 @@ export const collections = {
 	certificates,
 	referencesPage,
 	references,
-	referees,
 	instagram,
 };

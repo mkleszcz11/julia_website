@@ -4,7 +4,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Header from '../components/Header.astro';
 import PageHeader from '../components/PageHeader.astro';
 import EndorsementCards from '../components/EndorsementCards.astro';
-import RefereesList from '../components/RefereesList.astro';
 import ClosingCta from '../components/ClosingCta.astro';
 import Footer from '../components/Footer.astro';
 
@@ -17,7 +16,6 @@ const settings = settingsEntry.data;
 const page = pageEntry.data;
 
 const referenceItems = await getCollection('references');
-const refereeItems = await getCollection('referees');
 ---
 
 <BaseLayout title="References - Julia Pilch, Physiotherapist" description={page.hero.intro}>
@@ -26,14 +24,13 @@ const refereeItems = await getCollection('referees');
 		<PageHeader
 			heading={page.hero.heading}
 			intro={page.hero.intro}
-			wrapperMaxWidth="30em"
+			wrapperMaxWidth="42em"
 			headingSize="clamp(40px, 7vw, 68px)"
 			introColor="var(--muted)"
 			introMarginTop="18px"
 			paddingBottom="clamp(28px, 4vw, 40px)"
 		/>
 		<EndorsementCards items={referenceItems} />
-		<RefereesList copy={page.referees} items={refereeItems} />
 		<ClosingCta heading={page.closing.heading} ctaLabel={page.closing.ctaLabel} ctaHref={page.closing.ctaHref} variant="plain" />
 	</main>
 	<Footer settings={settings} />
