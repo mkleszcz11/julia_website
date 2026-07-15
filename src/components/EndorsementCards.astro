@@ -10,6 +10,16 @@ const sorted = [...items].sort((a, b) => a.data.pageOrder - b.data.pageOrder);
 
 const documentLabel = (doc: CollectionEntry<'references'>['data']['document']) =>
 	doc.label ?? (doc.type === 'pdf' ? 'View full reference (PDF)' : 'View full reference');
+
+// Roles that name a parent institution use a "…, University" clause. Break
+// at that last comma so the university sits on its own line as a whole unit
+// ("title · institute," / "University …") rather than orphaning a trailing
+// word. Roles without a comma render on a single line.
+const splitRole = (role: string) => {
+	const idx = role.lastIndexOf(', ');
+	if (idx === -1) return { primary: role, secondary: '' };
+	return { primary: role.slice(0, idx + 1), secondary: role.slice(idx + 2) };
+};
 ---
 
 <section class="jp-endorsements">
@@ -20,7 +30,15 @@ const documentLabel = (doc: CollectionEntry<'references'>['data']['document']) =
 					<blockquote>{item.data.longQuote}</blockquote>
 					<figcaption>
 						<span class="jp-name">{item.data.name}</span>
-						<span class="jp-role">{item.data.role}</span>
+						{(() => {
+							const { primary, secondary } = splitRole(item.data.role);
+							return (
+								<span class="jp-role">
+									<span class="jp-role-primary">{primary}</span>
+									{secondary && <span class="jp-role-secondary">{secondary}</span>}
+								</span>
+							);
+						})()}
 						{item.data.relation && <span class="jp-relation">{item.data.relation}</span>}
 					</figcaption>
 					<a
@@ -100,8 +118,16 @@ const documentLabel = (doc: CollectionEntry<'references'>['data']['document']) =
 	}
 
 	.jp-role {
+		display: flex;
+		flex-direction: column;
 		font-size: 13.5px;
 		color: var(--muted);
+	}
+
+	/* The university clause sits on its own line; `balance` keeps it from
+	   orphaning a single trailing word if it too must wrap. */
+	.jp-role-secondary {
+		text-wrap: balance;
 	}
 
 	.jp-relation {

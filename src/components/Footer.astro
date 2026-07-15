@@ -14,12 +14,12 @@ const year = new Date().getFullYear();
 	<div class="jp-footer-inner">
 		<div class="jp-foot-grid">
 			<div>
-				<div class="jp-brand">
+				<a href="/" class="jp-brand" aria-label={`${settings.siteName} — home`}>
 					<span class="jp-brand-mark">{settings.brandInitials}</span>
 					<span class="jp-brand-name">
 						{siteFirst}<span class="jp-dot">.</span>{siteMid}<span class="jp-dot">.</span>{siteLast}
 					</span>
-				</div>
+				</a>
 				<p class="jp-tagline">{settings.tagline}</p>
 			</div>
 
@@ -91,6 +91,18 @@ const year = new Date().getFullYear();
 		align-items: center;
 		gap: 10px;
 		margin: 0 0 14px;
+		width: fit-content;
+		text-decoration: none;
+		color: inherit;
+		transition: color 0.15s;
+	}
+
+	.jp-brand:hover {
+		color: #a9d2cb;
+	}
+
+	.jp-brand:hover .jp-brand-mark {
+		border-color: #a9d2cb;
 	}
 
 	.jp-brand-mark {

@@ -74,11 +74,19 @@ const brandHref = isHome ? '#top' : '/';
 		text-decoration: none;
 		color: var(--text);
 		cursor: pointer;
-		transition: color 0.15s;
+		/* Padding matches the nav links so the hover highlight has the same
+		   shape/feel; the negative margin offsets it so the logo doesn't shift. */
+		padding: 8px 12px;
+		margin: -8px -12px;
+		border-radius: 8px;
+		transition:
+			background 0.15s,
+			color 0.15s;
 	}
 
 	.jp-brand:hover {
-		color: var(--accent);
+		background: var(--beige);
+		color: var(--accent-deep);
 	}
 
 	.jp-brand:hover .jp-brand-mark {
