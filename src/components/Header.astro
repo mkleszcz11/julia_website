@@ -22,26 +22,28 @@ const brandHref = isHome ? '#top' : '/';
 		</a>
 		<nav>
 			{
-				settings.nav.map((item) => {
-					const isCta = item.href === settings.contactCta.href;
-					const isActive = !isCta && item.href === currentPath;
-					if (isCta) {
+				settings.nav
+					.filter((item) => !item.footerOnly)
+					.map((item) => {
+						const isCta = item.href === settings.contactCta.href;
+						const isActive = !isCta && item.href === currentPath;
+						if (isCta) {
+							return (
+								<a href={item.href} class="jp-nav-cta">
+									{item.label}
+								</a>
+							);
+						}
 						return (
-							<a href={item.href} class="jp-nav-cta">
+							<a
+								href={item.href}
+								class:list={['jp-nav-link', isActive && 'jp-nav-link--active']}
+								aria-current={isActive ? 'page' : undefined}
+							>
 								{item.label}
 							</a>
 						);
-					}
-					return (
-						<a
-							href={item.href}
-							class:list={['jp-nav-link', isActive && 'jp-nav-link--active']}
-							aria-current={isActive ? 'page' : undefined}
-						>
-							{item.label}
-						</a>
-					);
-				})
+					})
 			}
 		</nav>
 	</div>

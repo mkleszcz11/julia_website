@@ -4,7 +4,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Header from '../components/Header.astro';
 import PageHeader from '../components/PageHeader.astro';
 import CertificatesTimeline from '../components/CertificatesTimeline.astro';
-import CertificateLightbox from '../components/CertificateLightbox.astro';
+import Lightbox from '../components/Lightbox.astro';
+import ClosingCta from '../components/ClosingCta.astro';
 import Footer from '../components/Footer.astro';
 
 const settingsEntry = await getEntry('settings', 'settings');
@@ -23,7 +24,8 @@ const items = await getCollection('certificates');
 	<main>
 		<PageHeader heading={page.hero.heading} intro={page.hero.intro} wrapperMaxWidth="44rem" />
 		<CertificatesTimeline items={items} />
+		<ClosingCta heading={page.closing.heading} ctaLabel={page.closing.ctaLabel} ctaHref={page.closing.ctaHref} variant="beige" />
 	</main>
 	<Footer settings={settings} />
-	<CertificateLightbox />
+	<Lightbox />
 </BaseLayout>

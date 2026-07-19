@@ -37,10 +37,9 @@ const sorted = [...items].sort((a, b) => a.data.order - b.data.order);
 										type="button"
 										class="jp-cert-thumb"
 										data-open-lightbox
-										data-cert-title={entry.data.title}
-										data-cert-year={entry.data.year}
-										data-cert-image={entry.data.image}
-										data-cert-position={entry.data.imagePosition ?? '50% 50%'}
+										data-lb-title={entry.data.title}
+										data-lb-meta={entry.data.year}
+										data-lb-image={entry.data.image}
 										aria-label={`Enlarge certificate for ${entry.data.title} (${entry.data.year})`}
 									>
 										<span class="jp-cert-thumb-inner">

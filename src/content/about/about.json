@@ -4,8 +4,8 @@
 			"eyebrow": "About me",
 			"heading": "About me",
 			"intro": [
-				"Helping people regain their independence and confidence is what drew me to physiotherapy. For me, rehabilitation is about more than treating an injury - it is about the person behind it. Every patient has their own story, goals and needs, so I listen first and then build a plan that fits them, whether they are recovering from surgery, returning to sport, or rebuilding confidence in their body.",
-				"My work is shaped by my own active life. I grew up in Bielsko-Biała, Poland, surrounded by the Beskid Mountains, where I fell in love with running on demanding trails. Outside the clinic you will usually find me at the gym - weightlifting or doing CrossFit - or out running in the mountains. I'll happily try any activity that comes my way, whether that's swimming, yoga, or cross-country skiing. All of this helps me understand what movement means to the people I treat, and what it takes to get them back to it."
+				"Helping people regain their independence and confidence is what drew me to physiotherapy. For me, rehabilitation is more than an injury - it is the person behind it. Every patient has their own story, goals and needs, so I listen first and then build a plan that fits them, whether they are recovering from surgery, returning to sport, or rebuilding confidence in their body.",
+				"My work is shaped by my own active life. I grew up in Bielsko-Biała, Poland, surrounded by the Beskid Mountains, where I spent my youth playing competitive basketball before falling in love with trail running and spending time in nature. Outside the clinic you'll find me weightlifting, doing CrossFit, or running in the mountains - and I'm always up for something new, whether that's yoga or cross-country skiing. All of this helps me understand what movement means to the people I treat, and what it takes to get them back to it."
 			],
 			"photoAlt": "Julia Pilch working in the clinic with an exercise ball",
 			"photoImage": "/images/about/profile-picture.png"
@@ -21,10 +21,10 @@
 		"gallery": {
 			"eyebrow": "In practice",
 			"heading": "In practice",
-			"intro": "Moments from camps, tournaments and events I've supported - photos and clips to be added."
+			"intro": "Moments from the camps, tournaments and events I've supported."
 		},
 		"closing": {
-			"heading": "[Closing heading (1 sentence) - a direct, memorable line encouraging a visitor to get in touch, at the bottom of the About page.]",
+			"heading": "Everyone has a different goal.\nMine is to help you reach yours.",
 			"ctaLabel": "Get in touch",
 			"ctaHref": "#contact"
 		}

@@ -15,12 +15,16 @@ const settings = defineCollection({
 			z.object({
 				label: z.string(),
 				href: z.string(),
+				// Rendered only in the footer nav — the header's brand mark
+				// already covers links like the home page.
+				footerOnly: z.boolean().optional(),
 			}),
 		),
 		contactCta: z.object({
 			label: z.string(),
 			href: z.string(),
 		}),
+		phone: z.string(),
 		email: z.string().email(),
 		instagramHandle: z.string(),
 		instagramUrl: z.string().url(),
@@ -77,13 +81,14 @@ const home = defineCollection({
 		references: z.object({
 			eyebrow: z.string(),
 			heading: z.string(),
-			subheading: z.string(),
+			subheading: z.string().optional(),
 			ctaLabel: z.string(),
 			ctaHref: z.string(),
 		}),
 		instagram: z.object({
 			eyebrowHandle: z.string(),
 			ctaLabel: z.string(),
+			imageAlt: z.string(),
 		}),
 	}),
 });
@@ -199,6 +204,7 @@ const certificatesPage = defineCollection({
 			heading: z.string(),
 			intro: z.string(),
 		}),
+		closing: closingCta,
 	}),
 });
 
@@ -257,7 +263,7 @@ const references = defineCollection({
 const instagram = defineCollection({
 	loader: glob({ pattern: '**/*.json', base: 'src/content/instagram' }),
 	schema: z.object({
-		alt: z.string(),
+		alt: z.string().optional(),
 		href: z.string().url().optional(),
 		order: z.number(),
 		image: z.string(),

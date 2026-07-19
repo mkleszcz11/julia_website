@@ -3,8 +3,9 @@
 		"brandInitials": "jp",
 		"siteName": "julia.pilch.physio",
 		"title": "Physiotherapist",
-		"tagline": "Restoring movement. Building strength. Improving function.",
+		"tagline": "Restoring movement. Building strength. Improving function.",
 		"nav": [
+			{ "label": "Main Page", "href": "/", "footerOnly": true },
 			{ "label": "About me", "href": "/about" },
 			{ "label": "Areas of practice", "href": "/expertise" },
 			{ "label": "Certificates", "href": "/certificates" },
@@ -12,6 +13,7 @@
 			{ "label": "Contact", "href": "#contact" }
 		],
 		"contactCta": { "label": "Contact", "href": "#contact" },
+		"phone": "+47 00 00 00 00",
 		"email": "julia.pilch.physio@gmail.com",
 		"instagramHandle": "@julia.pilch.physio",
 		"instagramUrl": "https://instagram.com/julia.pilch.physio",

@@ -9,6 +9,7 @@ import HowIWork from '../components/HowIWork.astro';
 import ReferencesPreview from '../components/ReferencesPreview.astro';
 import InstagramPreview from '../components/InstagramPreview.astro';
 import Footer from '../components/Footer.astro';
+import { resolvePublicImage } from '../lib/publicImage';
 
 const settingsEntry = await getEntry('settings', 'settings');
 const homeEntry = await getEntry('home', 'home');
@@ -20,7 +21,10 @@ const home = homeEntry.data;
 
 const expertiseItems = (await getCollection('expertise')).filter((item) => item.data.featuredOnHome);
 const referenceItems = (await getCollection('references')).filter((item) => item.data.featuredOnHome);
-const instagramPosts = await getCollection('instagram');
+const instagramPosts = (await getCollection('instagram')).map((post) => ({
+	...post,
+	data: { ...post.data, image: resolvePublicImage(post.data.image) },
+}));
 ---
 
 <BaseLayout title="Julia Pilch - Physiotherapist in Trondheim, Norway" description={home.hero.tagline}>

@@ -11,7 +11,7 @@
 			"tagline": "Physiotherapy grounded in movement, function, and an individual approach.",
 			"availability": {
 				"show": true,
-				"text": "Currently seeking a clinic position in Trondheim - and learning Norwegian (A1) for the long term."
+				"text": "Currently seeking a clinic position in Trondheim - and learning Norwegian (currently A1)"
 			},
 			"ctaLabel": "Get in touch",
 			"ctaHref": "#contact",
@@ -39,24 +39,24 @@
 		"howIWork": {
 			"eyebrow": "How I work",
 			"phrases": [
-				"manual therapy",
 				"targeted exercise",
+				"manual therapy",
 				"an individual approach"
 			],
-			"paragraph": "[1-2 sentences describing your treatment process/method, from first assessment to how a plan is put together.]",
+			"paragraph": "I believe in restoring function through controlled movement, tailored to the specific case. During the visit, I first examine your body, then apply therapy according to your needs, and then introduce you to exercises relevant for your case. You leave every visit with homework, and it changes as you progress.",
 			"image": "/images/home/clinic-photo.png",
 			"imageAlt": "Julia Pilch in the clinic"
 		},
 		"references": {
 			"eyebrow": "References",
 			"heading": "What colleagues and supervisors say.",
-			"subheading": "[1 short sentence - sets up why these endorsements matter.]",
 			"ctaLabel": "See all references",
 			"ctaHref": "/references"
 		},
 		"instagram": {
 			"eyebrowHandle": "@julia.pilch.physio",
-			"ctaLabel": "Follow me on Instagram"
+			"ctaLabel": "Follow me on Instagram",
+			"imageAlt": "Photo from Julia Pilch's Instagram feed"
 		}
 	}
 }

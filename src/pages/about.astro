@@ -6,6 +6,7 @@ import AboutHero from '../components/AboutHero.astro';
 import ExperienceTimeline from '../components/ExperienceTimeline.astro';
 import EducationList from '../components/EducationList.astro';
 import GallerySection from '../components/GallerySection.astro';
+import Lightbox from '../components/Lightbox.astro';
 import ClosingCta from '../components/ClosingCta.astro';
 import Footer from '../components/Footer.astro';
 
@@ -32,4 +33,5 @@ const galleryItems = await getCollection('galleryItems');
 		<ClosingCta heading={about.closing.heading} ctaLabel={about.closing.ctaLabel} ctaHref={about.closing.ctaHref} variant="accentDeep" />
 	</main>
 	<Footer settings={settings} />
+	<Lightbox maxWidth="900px" />
 </BaseLayout>

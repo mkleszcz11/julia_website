@@ -30,7 +30,7 @@ const sorted = [...posts].sort((a, b) => a.data.order - b.data.order);
 				<a href={post.data.href ?? instagramUrl} target="_blank" rel="noopener" class="jp-instagram-tile">
 					<CoverImage
 						src={post.data.image}
-						alt={post.data.alt}
+						alt={post.data.alt ?? instagram.imageAlt}
 						ratio="1 / 1"
 						position={post.data.imagePosition ?? '50% 50%'}
 						radius="12px"

@@ -21,7 +21,7 @@ const sorted = [...items].sort((a, b) => a.data.order - b.data.order);
 				{references.ctaLabel} <span class="jp-arrow">→</span>
 			</a>
 		</div>
-		<p class="jp-subheading">{references.subheading}</p>
+		{references.subheading && <p class="jp-subheading">{references.subheading}</p>}
 	</div>
 	<div class="jp-references-grid-wrap">
 		<div class="jp-references-grid">
@@ -54,7 +54,7 @@ const sorted = [...items].sort((a, b) => a.data.order - b.data.order);
 	.jp-references-header {
 		max-width: 1180px;
 		margin: 0 auto;
-		padding: clamp(48px, 7vw, 84px) 20px clamp(40px, 6vw, 72px);
+		padding: clamp(48px, 7vw, 84px) 20px 34px;
 	}
 
 	.jp-references-heading-row {
@@ -63,7 +63,7 @@ const sorted = [...items].sort((a, b) => a.data.order - b.data.order);
 		align-items: flex-end;
 		justify-content: space-between;
 		gap: 16px;
-		margin: 0 0 8px;
+		margin: 0;
 	}
 
 	.jp-eyebrow {
@@ -115,7 +115,7 @@ const sorted = [...items].sort((a, b) => a.data.order - b.data.order);
 	.jp-subheading {
 		font-size: 14px;
 		color: var(--muted);
-		margin: 0;
+		margin: 8px 0 0;
 	}
 
 	.jp-references-grid-wrap {
