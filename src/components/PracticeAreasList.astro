@@ -1,6 +1,7 @@
 ---
 import type { CollectionEntry } from 'astro:content';
 import CoverImage from './CoverImage.astro';
+import PlaceholderImage from './PlaceholderImage.astro';
 
 interface Props {
 	items: CollectionEntry<'expertise'>[];
@@ -16,13 +17,17 @@ const sorted = [...items].sort((a, b) => a.data.order - b.data.order);
 			sorted.map((item) => (
 				<article class:list={['jp-area-row', item.data.special && 'jp-area-row--special']}>
 					<div class="jp-area-img">
-						<CoverImage
-							src={item.data.image}
-							alt={item.data.imageAlt}
-							ratio="4 / 3"
-							position={item.data.imagePosition ?? '50% 50%'}
-							radius="18px"
-						/>
+						{item.data.imagePending ? (
+							<PlaceholderImage aspectRatio="4 / 3" radius="18px" label="Photo to be added" />
+						) : (
+							<CoverImage
+								src={item.data.image}
+								alt={item.data.imageAlt}
+								ratio="4 / 3"
+								position={item.data.imagePosition ?? '50% 50%'}
+								radius="18px"
+							/>
+						)}
 					</div>
 					<div class="jp-area-text">
 						<p class="jp-area-num">{String(item.data.order).padStart(2, '0')}</p>

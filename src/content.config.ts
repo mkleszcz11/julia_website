@@ -193,6 +193,10 @@ const expertise = defineCollection({
 		image: z.string(),
 		imageAlt: z.string(),
 		imagePosition: z.string().optional(),
+		// When true, render the striped PlaceholderImage instead of the photo
+		// at `image` — for areas whose art hasn't been supplied yet. `image`
+		// still holds the intended path so flipping this off is the only change.
+		imagePending: z.boolean().default(false),
 	}),
 });
 

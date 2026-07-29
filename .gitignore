@@ -1,5 +1,7 @@
 # build output
 dist/
+# full-resolution photo originals — public/ holds the web-sized versions
+originals/
 # generated types
 .astro/
 # wrangler local cache

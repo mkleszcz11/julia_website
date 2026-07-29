@@ -1,0 +1,10 @@
+{
+	"title": "Massage therapy",
+	"description": "Focused on relieving muscle tension, supporting recovery, and improving well-being through therapeutic and relaxation techniques.",
+	"longDescription": "Massage therapy supports the body's recovery process by addressing muscle tension, soft tissue restrictions, and physical fatigue. A variety of techniques, including deep tissue, sports, classical, and relaxation massage, are used to create an approach suited to the session's goal.",
+	"order": 7,
+	"featuredOnHome": true,
+	"image": "/images/expertise/massage-therapy.jpg",
+	"imageAlt": "Massage therapy - Julia Pilch",
+	"imagePosition": "50% 55%"
+}

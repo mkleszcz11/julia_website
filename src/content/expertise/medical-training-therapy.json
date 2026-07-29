@@ -1,9 +1,9 @@
 {
 	"title": "Medical training therapy",
-	"description": "Targeted exercise programs to restore movement, build strength, and prevent re-injury.",
+	"description": "Safe, targeted exercise therapy tailored to conditions such as sciatica, disc herniation, chronic back pain, and post-operative musculoskeletal rehabilitation.",
 	"longDescription": "Medical training therapy is a structured, exercise-based approach that combines physiotherapy knowledge with targeted strength, mobility, and functional training. Programs are individually adapted based on each patient's condition, goals, and level of ability, with a focus on long-term recovery and prevention of future problems.",
 	"order": 2,
 	"featuredOnHome": true,
-	"image": "/images/expertise/medical-training-therapy.png",
+	"image": "/images/expertise/medical-training-therapy.jpg",
 	"imageAlt": "Medical training therapy - Julia Pilch"
 }

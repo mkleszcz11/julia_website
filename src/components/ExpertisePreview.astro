@@ -1,6 +1,7 @@
 ---
 import type { CollectionEntry } from 'astro:content';
 import CoverImage from './CoverImage.astro';
+import PlaceholderImage from './PlaceholderImage.astro';
 
 interface Props {
 	expertise: CollectionEntry<'home'>['data']['expertise'];
@@ -26,13 +27,17 @@ const sorted = [...items].sort((a, b) => a.data.order - b.data.order);
 		{
 			sorted.map((item) => (
 				<article class="jp-card">
-					<CoverImage
-						src={item.data.image}
-						alt={item.data.imageAlt}
-						ratio="1 / 0.82"
-						position={item.data.imagePosition ?? '50% 50%'}
-						radius="11px"
-					/>
+					{item.data.imagePending ? (
+						<PlaceholderImage aspectRatio="1 / 0.82" radius="11px" label="Photo to be added" />
+					) : (
+						<CoverImage
+							src={item.data.image}
+							alt={item.data.imageAlt}
+							ratio="1 / 0.82"
+							position={item.data.imagePosition ?? '50% 50%'}
+							radius="11px"
+						/>
+					)}
 					<div>
 						<h3>{item.data.title}</h3>
 						<p>{item.data.description}</p>
@@ -105,10 +110,26 @@ const sorted = [...items].sort((a, b) => a.data.order - b.data.order);
 		font-size: 17px;
 	}
 
+	/* Fixed four columns so seven cards flow 4 + 3: the second row keeps the
+	   same column width and lines up under the first three, rather than
+	   stretching to fill. Row gap equals column gap, so the two rows read as
+	   one continuous section. */
 	.jp-expertise-grid {
 		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+		grid-template-columns: repeat(4, 1fr);
 		gap: 16px;
+	}
+
+	@media (max-width: 900px) {
+		.jp-expertise-grid {
+			grid-template-columns: repeat(2, 1fr);
+		}
+	}
+
+	@media (max-width: 480px) {
+		.jp-expertise-grid {
+			grid-template-columns: 1fr;
+		}
 	}
 
 	.jp-card {
