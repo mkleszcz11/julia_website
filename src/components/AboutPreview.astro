@@ -16,6 +16,7 @@ const { about } = Astro.props;
 				src={about.image}
 				alt={about.imageAlt}
 				ratio="4 / 3.4"
+				sizes="(max-width: 760px) 92vw, (max-width: 1220px) 40vw, 486px"
 				position={about.imagePosition ?? '50% 50%'}
 				radius="18px"
 			/>

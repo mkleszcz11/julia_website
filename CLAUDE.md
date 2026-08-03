@@ -13,6 +13,9 @@ job-hunting in Trondheim, Norway. English-first. Not a business/marketing site.
 npm run dev        # dev server on localhost:4321
 npm run build      # static build to ./dist (runs astro check via @astrojs/check)
 npm run preview    # serve ./dist locally
+npm run images     # rebuild public/images + src/lib/image-manifest.json from ./originals
+                   #   (incremental; `-- --force` re-encodes everything)
+npm run fonts      # re-download the self-hosted webfonts into public/fonts
 npx astro check    # type-check .astro + TS on its own
 npx astro sync     # regenerate .astro/types.d.ts after editing src/content.config.ts
 ```
@@ -28,6 +31,7 @@ Node >= 22.12 is required.
 - Deploy target: Cloudflare Pages, git-connected. `wrangler.jsonc` serves `./dist`
   as static assets; it is not a Worker.
 - Zero runtime dependencies beyond Astro itself. No UI framework, no CSS framework.
+  `sharp` is a devDependency used only by the offline image script; nothing ships.
 
 ## Architecture
 
@@ -57,16 +61,32 @@ Don't duplicate item copy into `home.json`.
 
 **Chrome.** `settings` (nav, contact, socials, footer) is loaded by every page and
 passed to `Header`/`Footer`. `BaseLayout.astro` owns `<head>`: title/description
-props, canonical + OG/Twitter tags, Google Fonts. Canonical/OG URLs are gated on
+props, canonical + OG/Twitter tags, font preloads. Canonical/OG URLs are gated on
 `Astro.site`, which is still unset in `astro.config.mjs` — set it once the domain
-is known.
+is known. Fonts are self-hosted from `public/fonts` (see `scripts/fetch-fonts.mjs`),
+not fetched from Google — nothing on the page touches a third-party origin.
 
-**Assets** live in `public/` (`images/<page>/`, `documents/references/`) and are
-referenced by root-relative string paths inside content JSON, not imported. So
-they're unoptimized by design; keep files reasonably sized. Content JSON often
-carries an `imagePosition` (a CSS `object-position`) alongside the path so framing
-is editorial data, not CSS. Render images through `CoverImage.astro`; use
-`PlaceholderImage.astro` for not-yet-supplied art.
+**Assets** live in `public/` (`images/<page>/`, `documents/references/`, `fonts/`)
+and are referenced by root-relative string paths inside content JSON, not imported.
+Content JSON often carries an `imagePosition` (a CSS `object-position`) alongside
+the path so framing is editorial data, not CSS. Render images through
+`CoverImage.astro`; use `PlaceholderImage.astro` for not-yet-supplied art.
+
+**Image pipeline.** `public/images/**` is *generated* — do not hand-edit or add
+files there. Photo masters live in `originals/<page>/<name>.<ext>` (git-ignored;
+`originals/raw/` holds untouched camera files that nothing reads). `npm run images`
+resizes each master down a 400/800/1200/1600 ladder into avif + webp and writes
+`src/lib/image-manifest.json`. `getImage()` in `src/lib/images.ts` turns one
+content path into that `<picture>` payload; lookup ignores the extension, so
+content JSON keeps naming the master (`/images/home/clinic-photo.png`) whatever
+format it is, and an unknown path degrades to a plain `<img>` on the raw `src`.
+Adding a photo means dropping the master in `originals/` and re-running the script;
+it only encodes what is missing or older than its master, so that costs one photo,
+not the whole set. Use `npm run images -- --force` after changing the ladder or the
+quality constants. AVIF is the slow part — a full pass is tens of minutes.
+Every `CoverImage` needs a `sizes` matching its rendered slot, or the browser
+defaults to the widest variant; only the one above-the-fold photo per page gets
+`loading="eager" fetchpriority="high"`.
 
 ## Styling
 - Design tokens are CSS custom properties on `:root` in `src/styles/global.css`

@@ -1,6 +1,6 @@
 # build output
 dist/
-# full-resolution photo originals — public/ holds the web-sized versions
+# photo masters — `npm run images` generates public/images/ from these
 originals/
 # generated types
 .astro/

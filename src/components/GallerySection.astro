@@ -1,6 +1,7 @@
 ---
 import type { CollectionEntry } from 'astro:content';
 import CoverImage from './CoverImage.astro';
+import { getImageVariant } from '../lib/images';
 
 interface Props {
 	copy: CollectionEntry<'about'>['data']['gallery'];
@@ -9,6 +10,10 @@ interface Props {
 
 const { copy, items } = Astro.props;
 const sorted = [...items].sort((a, b) => a.data.order - b.data.order);
+
+// The lightbox on this page is capped at a 900px card, so the widest variant
+// is what an enlarged photo can actually use.
+const LIGHTBOX_WIDTH = 1600;
 ---
 
 <section class="jp-gallery">
@@ -16,14 +21,18 @@ const sorted = [...items].sort((a, b) => a.data.order - b.data.order);
 	<p class="jp-intro">{copy.intro}</p>
 	<div class="jp-gallery-grid">
 		{
-			sorted.map((item) => (
+			sorted.map((item) => {
+				const full = getImageVariant(item.data.image, LIGHTBOX_WIDTH);
+				return (
 				<figure class="jp-gallery-item">
 					<button
 						type="button"
 						class="jp-gallery-trigger"
 						data-open-lightbox
 						data-lb-title={item.data.caption}
-						data-lb-image={item.data.image}
+						data-lb-image={full.src}
+						data-lb-width={full.width || undefined}
+						data-lb-height={full.height || undefined}
 						data-lb-alt={item.data.imageAlt}
 						aria-label={`Enlarge photo: ${item.data.caption}`}
 					>
@@ -31,6 +40,7 @@ const sorted = [...items].sort((a, b) => a.data.order - b.data.order);
 							src={item.data.image}
 							alt={item.data.imageAlt}
 							ratio="4 / 3"
+							sizes="(max-width: 560px) 92vw, (max-width: 1220px) 30vw, 280px"
 							position={item.data.imagePosition ?? '50% 50%'}
 							radius="14px"
 						/>
@@ -38,7 +48,8 @@ const sorted = [...items].sort((a, b) => a.data.order - b.data.order);
 					</button>
 					<figcaption>{item.data.caption}</figcaption>
 				</figure>
-			))
+				);
+			})
 		}
 	</div>
 </section>

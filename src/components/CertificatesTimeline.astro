@@ -2,6 +2,7 @@
 import type { CollectionEntry } from 'astro:content';
 import TimelineRail from './TimelineRail.astro';
 import TimelineDot from './TimelineDot.astro';
+import { getImage, getImageVariant } from '../lib/images';
 
 interface Props {
 	items: CollectionEntry<'certificates'>[];
@@ -9,6 +10,11 @@ interface Props {
 
 const { items } = Astro.props;
 const sorted = [...items].sort((a, b) => a.data.order - b.data.order);
+
+// The thumb never renders wider than 200 CSS px; the lightbox tops out at a
+// 560px card, so 1200 is a comfortable 2x for reading a scanned certificate.
+const THUMB_SIZES = '200px';
+const LIGHTBOX_WIDTH = 1200;
 ---
 
 <section class="jp-certificates">
@@ -16,6 +22,8 @@ const sorted = [...items].sort((a, b) => a.data.order - b.data.order);
 		{
 			sorted.map((entry, i) => {
 				const panelId = `jp-cert-panel-${i}`;
+				const thumb = getImage(entry.data.image);
+				const full = getImageVariant(entry.data.image, LIGHTBOX_WIDTH);
 				return (
 					<li class="jp-cert-item">
 						<TimelineDot special={entry.data.special} paddingTop="18px" />
@@ -39,15 +47,26 @@ const sorted = [...items].sort((a, b) => a.data.order - b.data.order);
 										data-open-lightbox
 										data-lb-title={entry.data.title}
 										data-lb-meta={entry.data.year}
-										data-lb-image={entry.data.image}
+										data-lb-image={full.src}
+										data-lb-width={full.width || undefined}
+										data-lb-height={full.height || undefined}
 										aria-label={`Enlarge certificate for ${entry.data.title} (${entry.data.year})`}
 									>
 										<span class="jp-cert-thumb-inner">
-											<img
-												src={entry.data.image}
-												alt=""
-												style={{ objectPosition: entry.data.imagePosition ?? '50% 50%' }}
-											/>
+											<picture>
+												{thumb?.sources.map((source) => (
+													<source type={source.type} srcset={source.srcset} sizes={THUMB_SIZES} />
+												))}
+												<img
+													src={thumb?.src ?? entry.data.image}
+													width={thumb?.width}
+													height={thumb?.height}
+													alt=""
+													loading="lazy"
+													decoding="async"
+													style={{ objectPosition: entry.data.imagePosition ?? '50% 50%' }}
+												/>
+											</picture>
 											<span class="jp-cert-thumb-enlarge">⤢ Enlarge</span>
 										</span>
 									</button>
@@ -239,6 +258,11 @@ const sorted = [...items].sort((a, b) => a.data.order - b.data.order);
 		align-items: center;
 		justify-content: center;
 		background: var(--bg);
+	}
+
+	/* Layout no-op so the <img> stays the flex child of .jp-cert-thumb-inner. */
+	.jp-cert-thumb-inner picture {
+		display: contents;
 	}
 
 	.jp-cert-thumb-inner img {

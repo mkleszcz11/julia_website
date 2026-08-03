@@ -7,7 +7,10 @@ interface Props {
 }
 
 const { title, description } = Astro.props;
+// Scrapers reject relative image URLs, so the card only renders once `site` is
+// set in astro.config.mjs — same gate as the canonical tag.
 const canonicalURL = Astro.site ? new URL(Astro.url.pathname, Astro.site) : undefined;
+const ogImageURL = Astro.site ? new URL('/og-image.jpg', Astro.site) : undefined;
 ---
 
 <!doctype html>
@@ -26,16 +29,36 @@ const canonicalURL = Astro.site ? new URL(Astro.url.pathname, Astro.site) : unde
 		<meta property="og:title" content={title} />
 		<meta property="og:description" content={description} />
 		{canonicalURL && <meta property="og:url" content={canonicalURL} />}
-		<meta name="twitter:card" content="summary" />
+		{
+			ogImageURL && (
+				<>
+					<meta property="og:image" content={ogImageURL} />
+					<meta property="og:image:width" content="1200" />
+					<meta property="og:image:height" content="630" />
+					<meta property="og:image:alt" content="Julia Pilch, physiotherapist" />
+				</>
+			)
+		}
+		<meta name="twitter:card" content={ogImageURL ? 'summary_large_image' : 'summary'} />
 		<meta name="twitter:title" content={title} />
 		<meta name="twitter:description" content={description} />
+		{ogImageURL && <meta name="twitter:image" content={ogImageURL} />}
 
-		<link rel="preconnect" href="https://fonts.googleapis.com" />
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-		<link
-			rel="stylesheet"
-			href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&family=Spectral:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap"
-		/>
+		{/* The two faces the first screen is built from: body copy and headings.
+		    The rest load on demand from the @font-face rules in fonts.css. */}
+		<link rel="preload" as="font" type="font/woff2" href="/fonts/hanken-grotesk-400-latin.woff2" crossorigin />
+		<link rel="preload" as="font" type="font/woff2" href="/fonts/spectral-400-latin.woff2" crossorigin />
+
+		{/* Every page is a static document with photos on it, so a navigation
+		    otherwise starts fetching those photos only once the new HTML has
+		    parsed. `moderate` prerenders a same-origin page the pointer rests
+		    on — images and all — so the arrival is instant. Declarative JSON,
+		    no runtime JS; browsers without the API simply ignore it. */}
+		<script type="speculationrules" is:inline>
+			{
+				"prerender": [{ "where": { "href_matches": "/*" }, "eagerness": "moderate" }]
+			}
+		</script>
 	</head>
 	<body>
 		<slot />

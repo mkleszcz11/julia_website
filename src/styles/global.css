@@ -1,3 +1,6 @@
+/* Self-hosted webfaces — regenerate with `npm run fonts`. */
+@import './fonts.css';
+
 :root {
 	--accent: #3a7d76;
 	--accent-deep: #2f655f;
@@ -25,6 +28,23 @@ body {
 	line-height: 1.6;
 	-webkit-font-smoothing: antialiased;
 	overflow-x: hidden;
+}
+
+/* Honour the OS setting: the fade-ups and the smooth scroll are decoration, and
+   for some people they are nausea. Also removes the first-paint delay the hero
+   photo's opacity animation costs, since an element at opacity 0 is not painted. */
+@media (prefers-reduced-motion: reduce) {
+	html {
+		scroll-behavior: auto;
+	}
+
+	*,
+	*::before,
+	*::after {
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.01ms !important;
+	}
 }
 
 @keyframes jpFadeUp {

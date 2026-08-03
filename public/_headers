@@ -1,0 +1,17 @@
+# Cloudflare reads this from the deployed output root. Astro's own bundles are
+# content-hashed, so they can be cached forever; the hand-named assets get a
+# long-but-finite TTL and still revalidate cheaply against their ETag.
+
+/_astro/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/fonts/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Filenames are stable across a re-run of `npm run images`, so this must stay
+# revalidatable: a replaced photo has to reach visitors without a rename.
+/images/*
+  Cache-Control: public, max-age=2592000
+
+/documents/*
+  Cache-Control: public, max-age=2592000

@@ -117,10 +117,16 @@ const splitRole = (role: string) => {
 		font-size: 15px;
 	}
 
+	/* Two lines are reserved whether or not the role wraps, so the divider above
+	   the name lands at the same height in every card of a row — cards stretch
+	   to equal height, so an attribution block one line shorter would otherwise
+	   push its own divider down. */
 	.jp-role {
 		display: flex;
 		flex-direction: column;
 		font-size: 13.5px;
+		line-height: 1.45;
+		min-height: 2.9em;
 		color: var(--muted);
 	}
 

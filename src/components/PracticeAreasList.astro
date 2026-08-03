@@ -24,6 +24,7 @@ const sorted = [...items].sort((a, b) => a.data.order - b.data.order);
 								src={item.data.image}
 								alt={item.data.imageAlt}
 								ratio="4 / 3"
+								sizes="(max-width: 780px) 92vw, (max-width: 1220px) 38vw, 460px"
 								position={item.data.imagePosition ?? '50% 50%'}
 								radius="18px"
 							/>

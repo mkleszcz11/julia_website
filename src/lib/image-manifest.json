@@ -1,0 +1,550 @@
+{
+	"/images/about/practice-1": {
+		"width": 1078,
+		"height": 1440,
+		"widths": [
+			400,
+			800,
+			1078
+		],
+		"formats": [
+			"avif",
+			"webp"
+		]
+	},
+	"/images/about/practice-10": {
+		"width": 1600,
+		"height": 1067,
+		"widths": [
+			400,
+			800,
+			1200,
+			1600
+		],
+		"formats": [
+			"avif",
+			"webp"
+		]
+	},
+	"/images/about/practice-11": {
+		"width": 1600,
+		"height": 1067,
+		"widths": [
+			400,
+			800,
+			1200,
+			1600
+		],
+		"formats": [
+			"avif",
+			"webp"
+		]
+	},
+	"/images/about/practice-12": {
+		"width": 960,
+		"height": 720,
+		"widths": [
+			400,
+			800,
+			960
+		],
+		"formats": [
+			"avif",
+			"webp"
+		]
+	},
+	"/images/about/practice-2": {
+		"width": 1600,
+		"height": 1066,
+		"widths": [
+			400,
+			800,
+			1200,
+			1600
+		],
+		"formats": [
+			"avif",
+			"webp"
+		]
+	},
+	"/images/about/practice-3": {
+		"width": 1200,
+		"height": 1600,
+		"widths": [
+			400,
+			800,
+			1200
+		],
+		"formats": [
+			"avif",
+			"webp"
+		]
+	},
+	"/images/about/practice-4": {
+		"width": 1600,
+		"height": 1067,
+		"widths": [
+			400,
+			800,
+			1200,
+			1600
+		],
+		"formats": [
+			"avif",
+			"webp"
+		]
+	},
+	"/images/about/practice-5": {
+		"width": 1600,
+		"height": 1067,
+		"widths": [
+			400,
+			800,
+			1200,
+			1600
+		],
+		"formats": [
+			"avif",
+			"webp"
+		]
+	},
+	"/images/about/practice-6": {
+		"width": 940,
+		"height": 788,
+		"widths": [
+			400,
+			800,
+			940
+		],
+		"formats": [
+			"avif",
+			"webp"
+		]
+	},
+	"/images/about/practice-7": {
+		"width": 1600,
+		"height": 1067,
+		"widths": [
+			400,
+			800,
+			1200,
+			1600
+		],
+		"formats": [
+			"avif",
+			"webp"
+		]
+	},
+	"/images/about/practice-8": {
+		"width": 1200,
+		"height": 1600,
+		"widths": [
+			400,
+			800,
+			1200
+		],
+		"formats": [
+			"avif",
+			"webp"
+		]
+	},
+	"/images/about/practice-9": {
+		"width": 1600,
+		"height": 1067,
+		"widths": [
+			400,
+			800,
+			1200,
+			1600
+		],
+		"formats": [
+			"avif",
+			"webp"
+		]
+	},
+	"/images/about/profile-picture": {
+		"width": 3680,
+		"height": 3680,
+		"widths": [
+			400,
+			800,
+			1200,
+			1600
+		],
+		"formats": [
+			"avif",
+			"webp"
+		]
+	},
+	"/images/certificates/classic-massage": {
+		"width": 1219,
+		"height": 1800,
+		"widths": [
+			400,
+			800,
+			1200,
+			1219
+		],
+		"formats": [
+			"avif",
+			"webp"
+		]
+	},
+	"/images/certificates/deep-tissue-massage": {
+		"width": 1235,
+		"height": 1800,
+		"widths": [
+			400,
+			800,
+			1200,
+			1235
+		],
+		"formats": [
+			"avif",
+			"webp"
+		]
+	},
+	"/images/certificates/instrument-assisted-soft-tissue-mobilization": {
+		"width": 1260,
+		"height": 1800,
+		"widths": [
+			400,
+			800,
+			1200,
+			1260
+		],
+		"formats": [
+			"avif",
+			"webp"
+		]
+	},
+	"/images/certificates/integrational-scar-tissue-therapy": {
+		"width": 1233,
+		"height": 1800,
+		"widths": [
+			400,
+			800,
+			1200,
+			1233
+		],
+		"formats": [
+			"avif",
+			"webp"
+		]
+	},
+	"/images/certificates/medical-trainer-certificate": {
+		"width": 1800,
+		"height": 1273,
+		"widths": [
+			400,
+			800,
+			1200,
+			1600
+		],
+		"formats": [
+			"avif",
+			"webp"
+		]
+	},
+	"/images/certificates/motor-preparation-fundamentals": {
+		"width": 1800,
+		"height": 1298,
+		"widths": [
+			400,
+			800,
+			1200,
+			1600
+		],
+		"formats": [
+			"avif",
+			"webp"
+		]
+	},
+	"/images/certificates/physiotherapy-after-limb-loss": {
+		"width": 1800,
+		"height": 1285,
+		"widths": [
+			400,
+			800,
+			1200,
+			1600
+		],
+		"formats": [
+			"avif",
+			"webp"
+		]
+	},
+	"/images/certificates/prosthetic-components-training": {
+		"width": 1800,
+		"height": 1238,
+		"widths": [
+			400,
+			800,
+			1200,
+			1600
+		],
+		"formats": [
+			"avif",
+			"webp"
+		]
+	},
+	"/images/certificates/prosthetic-gait-training": {
+		"width": 1700,
+		"height": 1178,
+		"widths": [
+			400,
+			800,
+			1200,
+			1600
+		],
+		"formats": [
+			"avif",
+			"webp"
+		]
+	},
+	"/images/certificates/rehabilitation-after-amputation-training": {
+		"width": 1800,
+		"height": 1331,
+		"widths": [
+			400,
+			800,
+			1200,
+			1600
+		],
+		"formats": [
+			"avif",
+			"webp"
+		]
+	},
+	"/images/certificates/scar-therapy-after-amputation": {
+		"width": 1800,
+		"height": 1391,
+		"widths": [
+			400,
+			800,
+			1200,
+			1600
+		],
+		"formats": [
+			"avif",
+			"webp"
+		]
+	},
+	"/images/expertise/massage-therapy": {
+		"width": 5712,
+		"height": 4284,
+		"widths": [
+			400,
+			800,
+			1200,
+			1600
+		],
+		"formats": [
+			"avif",
+			"webp"
+		]
+	},
+	"/images/expertise/medical-training-therapy": {
+		"width": 2000,
+		"height": 1500,
+		"widths": [
+			400,
+			800,
+			1200,
+			1600
+		],
+		"formats": [
+			"avif",
+			"webp"
+		]
+	},
+	"/images/expertise/orthopaedic-physiotherapy": {
+		"width": 5630,
+		"height": 3753,
+		"widths": [
+			400,
+			800,
+			1200,
+			1600
+		],
+		"formats": [
+			"avif",
+			"webp"
+		]
+	},
+	"/images/expertise/personal-training": {
+		"width": 2000,
+		"height": 2000,
+		"widths": [
+			400,
+			800,
+			1200,
+			1600
+		],
+		"formats": [
+			"avif",
+			"webp"
+		]
+	},
+	"/images/expertise/rehabilitation-after-amputation": {
+		"width": 2667,
+		"height": 4000,
+		"widths": [
+			400,
+			800,
+			1200,
+			1600
+		],
+		"formats": [
+			"avif",
+			"webp"
+		]
+	},
+	"/images/expertise/scar-therapy": {
+		"width": 2000,
+		"height": 1500,
+		"widths": [
+			400,
+			800,
+			1200,
+			1600
+		],
+		"formats": [
+			"avif",
+			"webp"
+		]
+	},
+	"/images/expertise/sports-physiotherapy": {
+		"width": 1086,
+		"height": 1448,
+		"widths": [
+			400,
+			800,
+			1086
+		],
+		"formats": [
+			"avif",
+			"webp"
+		]
+	},
+	"/images/home/clinic-photo": {
+		"width": 4000,
+		"height": 2667,
+		"widths": [
+			400,
+			800,
+			1200,
+			1600
+		],
+		"formats": [
+			"avif",
+			"webp"
+		]
+	},
+	"/images/home/instagram-1": {
+		"width": 1080,
+		"height": 1080,
+		"widths": [
+			400,
+			800,
+			1080
+		],
+		"formats": [
+			"avif",
+			"webp"
+		]
+	},
+	"/images/home/instagram-2": {
+		"width": 1080,
+		"height": 1080,
+		"widths": [
+			400,
+			800,
+			1080
+		],
+		"formats": [
+			"avif",
+			"webp"
+		]
+	},
+	"/images/home/instagram-3": {
+		"width": 1080,
+		"height": 1920,
+		"widths": [
+			400,
+			800,
+			1080
+		],
+		"formats": [
+			"avif",
+			"webp"
+		]
+	},
+	"/images/home/instagram-4": {
+		"width": 1080,
+		"height": 1080,
+		"widths": [
+			400,
+			800,
+			1080
+		],
+		"formats": [
+			"avif",
+			"webp"
+		]
+	},
+	"/images/home/instagram-5": {
+		"width": 1080,
+		"height": 1920,
+		"widths": [
+			400,
+			800,
+			1080
+		],
+		"formats": [
+			"avif",
+			"webp"
+		]
+	},
+	"/images/home/instagram-6": {
+		"width": 1080,
+		"height": 1080,
+		"widths": [
+			400,
+			800,
+			1080
+		],
+		"formats": [
+			"avif",
+			"webp"
+		]
+	},
+	"/images/home/profile-picture": {
+		"width": 3200,
+		"height": 4000,
+		"widths": [
+			400,
+			800,
+			1200,
+			1600
+		],
+		"formats": [
+			"avif",
+			"webp"
+		]
+	},
+	"/images/home/working-photo": {
+		"width": 4000,
+		"height": 2667,
+		"widths": [
+			400,
+			800,
+			1200,
+			1600
+		],
+		"formats": [
+			"avif",
+			"webp"
+		]
+	}
+}

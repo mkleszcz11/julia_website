@@ -30,6 +30,7 @@ const { howIWork } = Astro.props;
 				src={howIWork.image}
 				alt={howIWork.imageAlt}
 				ratio="4 / 3.2"
+				sizes="(max-width: 760px) 92vw, (max-width: 1220px) 38vw, 500px"
 				position={howIWork.imagePosition ?? '50% 50%'}
 				radius="18px"
 				borderColor="rgba(255, 255, 255, 0.16)"

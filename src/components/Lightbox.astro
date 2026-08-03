@@ -13,7 +13,7 @@ const { maxWidth = '560px' } = Astro.props;
 	<button type="button" class="jp-lightbox-close" data-close-lightbox aria-label="Close">✕</button>
 	<div class="jp-lightbox-card">
 		<div class="jp-lightbox-image">
-			<img data-lightbox-image alt="" />
+			<img data-lightbox-image alt="" decoding="async" />
 		</div>
 		<div class="jp-lightbox-caption" data-lightbox-caption>
 			<p class="jp-lightbox-title" data-lightbox-title></p>
@@ -90,6 +90,14 @@ const { maxWidth = '560px' } = Astro.props;
 		max-width: 100%;
 		max-height: 74vh;
 		object-fit: contain;
+		transition: opacity 0.12s ease;
+	}
+
+	/* Between opening and the new photo decoding, the <img> still holds the
+	   previously opened frame. Hide it for that stretch — the width/height
+	   attributes keep the box reserved, so nothing jumps when it appears. */
+	.jp-lightbox-image img[data-loading] {
+		opacity: 0;
 	}
 
 	.jp-lightbox-caption {
@@ -134,6 +142,37 @@ const { maxWidth = '560px' } = Astro.props;
 		const metaEl = dialog.querySelector<HTMLElement>('[data-lightbox-meta]');
 		const imageEl = dialog.querySelector<HTMLImageElement>('[data-lightbox-image]');
 
+		// A plain `img.src = …` keeps painting the old photo until the new one
+		// decodes, which reads as the previously opened image flashing up first.
+		// Blank it while it loads instead, sizing the box from the trigger's
+		// dimensions so the card doesn't collapse and jump in the meantime.
+		const swapImage = (button: HTMLButtonElement, fallbackAlt: string) => {
+			if (!imageEl) return;
+			const src = button.dataset.lbImage ?? '';
+			imageEl.alt = button.dataset.lbAlt ?? fallbackAlt;
+
+			const width = button.dataset.lbWidth;
+			const height = button.dataset.lbHeight;
+			if (width && height) {
+				imageEl.width = Number(width);
+				imageEl.height = Number(height);
+			} else {
+				imageEl.removeAttribute('width');
+				imageEl.removeAttribute('height');
+			}
+
+			if (imageEl.getAttribute('src') === src && imageEl.complete) return;
+
+			imageEl.dataset.loading = '';
+			imageEl.src = src;
+			const reveal = () => delete imageEl.dataset.loading;
+			if (imageEl.complete) reveal();
+			else {
+				imageEl.addEventListener('load', reveal, { once: true });
+				imageEl.addEventListener('error', reveal, { once: true });
+			}
+		};
+
 		document.querySelectorAll<HTMLButtonElement>('[data-open-lightbox]').forEach((button) => {
 			button.addEventListener('click', () => {
 				const title = button.dataset.lbTitle ?? '';
@@ -141,10 +180,7 @@ const { maxWidth = '560px' } = Astro.props;
 				if (titleEl) titleEl.textContent = title;
 				if (metaEl) metaEl.textContent = meta;
 				if (captionEl) captionEl.hidden = !title && !meta;
-				if (imageEl) {
-					imageEl.src = button.dataset.lbImage ?? '';
-					imageEl.alt = button.dataset.lbAlt ?? title;
-				}
+				swapImage(button, title);
 				dialog.showModal();
 			});
 		});
