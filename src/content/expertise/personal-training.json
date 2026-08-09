@@ -1,7 +1,7 @@
 {
 	"title": "Personal training",
-	"description": "Individual training programs to build strength, improve fitness, and prepare for performance goals such as HYROX.",
-	"longDescription": "Personal training focuses on developing strength, improving movement quality, and building physical confidence through individualised exercise programs. Training is adapted to each person's goals, abilities, and experience level, whether the aim is improving general fitness, returning to activity, enhancing performance, or preparing for challenges such as HYROX.",
+	"description": "Individual training programmes to build strength, improve fitness, and prepare for performance goals such as HYROX.",
+	"longDescription": "Personal training focuses on developing strength, improving movement quality, and building physical confidence through individualised exercise programmes. Training is adapted to each person's goals, abilities, and experience level, whether the aim is improving general fitness, returning to activity, enhancing performance, or preparing for challenges such as HYROX.",
 	"order": 6,
 	"featuredOnHome": true,
 	"image": "/images/expertise/personal-training.jpg",

@@ -105,6 +105,9 @@ const closingCta = z.object({
 const about = defineCollection({
 	loader: file('src/content/about/about.json'),
 	schema: z.object({
+		// Concise summary for <meta description>/OG — the hero intro is a full
+		// paragraph that would truncate mid-sentence in search and share cards.
+		metaDescription: z.string(),
 		hero: z.object({
 			eyebrow: z.string(),
 			heading: z.string(),
@@ -203,6 +206,8 @@ const expertise = defineCollection({
 const certificatesPage = defineCollection({
 	loader: file('src/content/certificates-page/certificates-page.json'),
 	schema: z.object({
+		// Concise summary for <meta description>/OG — see note on `about`.
+		metaDescription: z.string(),
 		hero: z.object({
 			eyebrow: z.string(),
 			heading: z.string(),

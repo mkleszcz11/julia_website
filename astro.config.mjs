@@ -4,8 +4,9 @@ import icon from 'astro-icon';
 
 // https://astro.build/config
 export default defineConfig({
-	// TODO: set `site` to the final Cloudflare Pages / custom domain once known,
-	// so canonical URLs and OG tags resolve to absolute paths.
+	// Absolute base for canonical URLs and OG/Twitter card tags. Update to the
+	// final custom domain once known — see the same note in BaseLayout.astro.
+	site: 'https://julia-website.kleszcz.workers.dev',
 	output: 'static',
 	// Inlines Iconify SVGs at build time — no runtime JS, no network fetch.
 	integrations: [icon()],
