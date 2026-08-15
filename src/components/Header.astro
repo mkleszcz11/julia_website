@@ -20,30 +20,43 @@ const brandHref = isHome ? '#top' : '/';
 				{siteFirst}<span class="jp-dot">.</span>{siteMid}<span class="jp-dot">.</span>{siteLast}
 			</span>
 		</a>
-		<nav>
+		<button
+			type="button"
+			class="jp-nav-toggle"
+			aria-controls="jp-menu"
+			aria-expanded="false"
+			aria-label="Menu"
+		>
+			<span class="jp-nav-toggle-bar"></span>
+			<span class="jp-nav-toggle-bar"></span>
+			<span class="jp-nav-toggle-bar"></span>
+		</button>
+		<nav id="jp-menu" class="jp-menu">
 			{
-				settings.nav
-					.filter((item) => !item.footerOnly)
-					.map((item) => {
-						const isCta = item.href === settings.contactCta.href;
-						const isActive = !isCta && item.href === currentPath;
-						if (isCta) {
-							return (
-								<a href={item.href} class="jp-nav-cta">
-									{item.label}
-								</a>
-							);
-						}
+				settings.nav.map((item) => {
+					const isCta = item.href === settings.contactCta.href;
+					const isActive = !isCta && item.href === currentPath;
+					if (isCta) {
 						return (
-							<a
-								href={item.href}
-								class:list={['jp-nav-link', isActive && 'jp-nav-link--active']}
-								aria-current={isActive ? 'page' : undefined}
-							>
+							<a href={item.href} class="jp-nav-cta">
 								{item.label}
 							</a>
 						);
-					})
+					}
+					return (
+						<a
+							href={item.href}
+							class:list={[
+								'jp-nav-link',
+								item.footerOnly && 'jp-nav-link--mobile',
+								isActive && 'jp-nav-link--active',
+							]}
+							aria-current={isActive ? 'page' : undefined}
+						>
+							{item.label}
+						</a>
+					);
+				})
 			}
 		</nav>
 	</div>
@@ -60,6 +73,7 @@ const brandHref = isHome ? '#top' : '/';
 	}
 
 	.jp-header-inner {
+		position: relative;
 		max-width: 1180px;
 		margin: 0 auto;
 		padding: 14px 20px;
@@ -120,7 +134,7 @@ const brandHref = isHome ? '#top' : '/';
 		color: var(--muted);
 	}
 
-	nav {
+	.jp-menu {
 		display: flex;
 		align-items: center;
 		gap: 4px;
@@ -149,6 +163,12 @@ const brandHref = isHome ? '#top' : '/';
 		background: var(--beige);
 	}
 
+	/* The "Main Page" (home) route lives in the footer on desktop; it only
+	   surfaces inside the mobile dropdown so tapping home is obvious there. */
+	.jp-nav-link--mobile {
+		display: none;
+	}
+
 	.jp-nav-cta {
 		text-decoration: none;
 		color: #fff;
@@ -163,4 +183,129 @@ const brandHref = isHome ? '#top' : '/';
 	.jp-nav-cta:hover {
 		background: var(--accent-deep);
 	}
+
+	/* Hamburger toggle — hidden until the layout gets tight. */
+	.jp-nav-toggle {
+		display: none;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		gap: 5px;
+		width: 42px;
+		height: 42px;
+		padding: 0;
+		background: transparent;
+		border: 1px solid var(--border);
+		border-radius: 11px;
+		cursor: pointer;
+		transition: background 0.15s;
+	}
+
+	.jp-nav-toggle:hover {
+		background: var(--beige);
+	}
+
+	.jp-nav-toggle-bar {
+		display: block;
+		width: 20px;
+		height: 2px;
+		border-radius: 2px;
+		background: var(--text);
+		transition:
+			transform 0.2s,
+			opacity 0.2s;
+	}
+
+	.jp-nav-toggle[aria-expanded='true'] .jp-nav-toggle-bar:nth-child(1) {
+		transform: translateY(7px) rotate(45deg);
+	}
+
+	.jp-nav-toggle[aria-expanded='true'] .jp-nav-toggle-bar:nth-child(2) {
+		opacity: 0;
+	}
+
+	.jp-nav-toggle[aria-expanded='true'] .jp-nav-toggle-bar:nth-child(3) {
+		transform: translateY(-7px) rotate(-45deg);
+	}
+
+	/* Switch to the hamburger before the horizontal nav can outgrow the row.
+	   The full desktop nav needs ~860px; below that it would overflow. */
+	@media (max-width: 900px) {
+		.jp-header-inner {
+			padding: 11px 18px;
+		}
+
+		.jp-nav-toggle {
+			display: flex;
+		}
+
+		/* Nav becomes a right-aligned dropdown under the compact header row. */
+		.jp-menu {
+			position: absolute;
+			top: calc(100% + 8px);
+			right: 12px;
+			left: auto;
+			display: none;
+			flex-direction: column;
+			align-items: stretch;
+			gap: 2px;
+			min-width: 220px;
+			max-width: calc(100vw - 24px);
+			padding: 8px;
+			background: var(--bg);
+			border: 1px solid var(--border);
+			border-radius: 16px;
+			box-shadow: 0 14px 34px rgba(31, 41, 38, 0.14);
+			white-space: normal;
+		}
+
+		.jp-menu.is-open {
+			display: flex;
+		}
+
+		.jp-nav-link,
+		.jp-nav-link--mobile {
+			display: block;
+			font-size: 15px;
+			padding: 11px 14px;
+		}
+
+		.jp-nav-cta {
+			margin-top: 4px;
+			padding: 12px 16px;
+			font-size: 15px;
+			text-align: center;
+		}
+	}
 </style>
+
+<script>
+	const toggle = document.querySelector<HTMLButtonElement>('.jp-nav-toggle');
+	const menu = document.getElementById('jp-menu');
+
+	if (toggle && menu) {
+		const setOpen = (open: boolean) => {
+			toggle.setAttribute('aria-expanded', String(open));
+			menu.classList.toggle('is-open', open);
+		};
+
+		toggle.addEventListener('click', () => {
+			setOpen(toggle.getAttribute('aria-expanded') !== 'true');
+		});
+
+		// Tapping any menu entry navigates, so collapse the panel behind it.
+		menu.addEventListener('click', (event) => {
+			if ((event.target as HTMLElement).closest('a')) setOpen(false);
+		});
+
+		document.addEventListener('keydown', (event) => {
+			if (event.key === 'Escape') setOpen(false);
+		});
+
+		// Close when tapping anywhere outside the toggle or the panel.
+		document.addEventListener('click', (event) => {
+			const target = event.target as Node;
+			if (!menu.contains(target) && !toggle.contains(target)) setOpen(false);
+		});
+	}
+</script>

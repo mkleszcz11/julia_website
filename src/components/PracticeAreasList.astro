@@ -117,6 +117,10 @@ const sorted = [...items].sort((a, b) => a.data.order - b.data.order);
 		.jp-area-row {
 			grid-template-columns: 1fr !important;
 		}
+		.jp-area-img,
+		.jp-area-text {
+			grid-column: 1;
+		}
 		.jp-area-img {
 			order: -1;
 		}
